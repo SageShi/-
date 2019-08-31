@@ -1,0 +1,57 @@
+ <!--Tab布局-->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>报修</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>建议</view>
+</view>
+
+  <!--内容布局-->
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+    <swiper-item class='swiper'>
+      <view style='height=100%'>
+      <form style='height=100%'>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/building.png'/>
+              <input placeholder='楼号'>{{archNum}}</input>
+          </view>
+      </view>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/room.png'/>
+              <input placeholder='房号'>{{roomNum}}</input>
+          </view>
+      </view>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/cpt-g.png'/>
+              <input placeholder='机器号'>{{mechaNum}}</input>
+          </view>
+      </view>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext'>{{description}}</textarea>
+      <label class='date'>{{Date}}</label>
+      <button class='submitbutton'>提交</button>
+      </form>
+      </view>
+    </swiper-item>
+    <swiper-item class='swiper'>
+      <view style='height=100%'>
+      <form style='height=100%'>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/building.png'/>
+              <input placeholder='楼号'>{{archNum}}</input>
+          </view>
+      </view>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/room.png'/>
+              <input placeholder='房号'>{{roomNum}}</input>
+          </view>
+      </view>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext'>{{description}}</textarea>
+      <label class='date'>{{Date}}</label>
+      <button class='submitbutton'>提交</button>
+      </form>
+      </view>
+    </swiper-item>
+  </swiper>

@@ -1,0 +1,13 @@
+  <!--Tab布局-->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>文档</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>视频</view>
+</view>
+  <!--内容布局-->
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+    <swiper-item class='swiper'>
+    </swiper-item>
+    <swiper-item class='swiper' class='swiper'>     
+      <web-view src="http://www.baidu.com/"></web-view>
+    </swiper-item>
+  </swiper>

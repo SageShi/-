@@ -1,0 +1,44 @@
+/*
+选项卡css
+*/
+.tab {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 10rpx 0;
+}
+ 
+.topTabSwiper {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  zoom: 1;
+}
+ 
+.topTabSwiper:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+ 
+.tabBorer-A {
+  border-bottom: 1px solid #09BB07;
+  border-width: 2px;
+  color:  #09BB07;
+}
+
+.tabBorer-B {
+  border-bottom: 1px solid rgb(178, 180, 178);
+  color: rgb(178, 180, 178);
+  border-width: 2px;
+}
+ 
+.swiper {
+  width: 100%;
+}
+ 
+.swiper_con {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 80rpx 0;
+}

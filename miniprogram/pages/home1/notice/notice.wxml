@@ -1,0 +1,54 @@
+<!--Tab布局-->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>坏的设备</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>课堂通知</view>
+</view>
+<!-- 搜索框 -->
+    <view class="search-bar">
+        <view class="search-bar__form">
+            <view class="search-bar__box">
+                <icon class="icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="search-bar__input" placeholder="请输入楼号和房号"/>
+            </view>
+        </view>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+    </view>
+  <!--内容布局-->
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+  <!-- 第一个选项卡 -->
+    <swiper-item class='swiper'>
+        <!-- 设备通知列表 -->
+      <view  class='noticeblock'>
+        <block wx:for="{{deviceList}}" wx:key="*this">
+          <view class='noticelist'> 
+            <image src='icon/cpt-r.png' class='icon'></image>
+            <view class='line'> 
+              <view class='allInfo'>{{item.building+'-'+item.room+'-'+item.device}}</view>
+              <view class='content'>{{item.content}}</view>
+              <view class='date'>{{item.date}}</view>
+            </view>
+          </view> 
+        </block>
+      </view>
+    </swiper-item>
+    <!-- 第二个选项卡 -->
+    <swiper-item class='swiper'>
+      <!-- 课堂通知列表 -->
+            <block wx:for="{{deviceList}}">
+        <view class='cardout'>
+          <view class='cardin'>
+            <view style='border-bottom:solid;border-color:rgba(102, 102, 105, 0.863);border-bottom-width:3rpx;'>
+              <label>{{item.building+'-'+item.room+'-'+item.device}}</label>
+            </view>
+            <view>
+              <text style="word-break:break-all">{{item.content}}</text>
+            </view>
+            <view style='text-align:right;'>
+              <label style='text-align:right;'>{{item.date}}</label>
+            </view>
+          </view>
+        </view>
+      </block>
+    </swiper-item>
+  </swiper>

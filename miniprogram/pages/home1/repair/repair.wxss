@@ -1,0 +1,95 @@
+/*
+选项卡css
+*/
+.tab {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 10rpx 0;
+}
+ 
+.topTabSwiper {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  zoom: 1;
+}
+ 
+.topTabSwiper:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+ 
+.tabBorer-A {
+  border-bottom: 1px solid #09BB07;
+  border-width: 2px;
+  color:  #09BB07;
+}
+
+.tabBorer-B {
+  border-bottom: 1px solid rgb(178, 180, 178);
+  color: rgb(178, 180, 178);
+  border-width: 2px;
+}
+ 
+.swiper {
+  width: 100%;
+}
+ 
+.swiper_con {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 80rpx 0;
+}
+/*
+报修页面css
+*/
+textarea{
+  border: 1;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+.date{
+
+}
+
+.submitbutton{
+  width: 80%;
+  background-color: rgb(65, 209, 65);
+  color: white;
+  border-radius: 98rpx;
+  margin-bottom: 10rpx;
+}
+
+.out {
+    display: flex;
+    flex-direction: row;
+    height: 98rpx;
+    background:#fff;
+    align-items: center;
+}
+
+.in {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    flex-direction: row;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    margin-left: 20rpx;
+}
+
+image{
+    height: 42rpx;
+    width: 42rpx;
+    align-self: center;
+    margin-left: 10rpx;
+    margin-right: 20rpx;
+}
+
+input{
+    flex: 1;
+    font-size: 30rpx;
+}
