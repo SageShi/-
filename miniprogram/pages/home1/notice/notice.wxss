@@ -107,8 +107,9 @@
   color: rgba(102, 102, 105, 0.863);
   border-radius: 35rpx;
   padding: 20rpx 20rpx 20rpx 20rpx;
-  border-style: solid;
+  border-style: dashed;
   border-color: #7cc75f;
+  font-size:14px;
 }
 
 /*
@@ -123,23 +124,23 @@
 }
 .line{
   margin-bottom: 5px;
-  margin-left: 9px;
-  border-left: 2px solid #D7D6DC;
+  margin-left: 13px;
+  border-left: 2px solid rgb(65, 209, 65);
   height: 100%; 
   background: #fff;
 }
 .icon{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 .allInfo{
   /* width: 50px; */
   /* float: left; */
   font-size:14px;
   padding-left: 15px;
-  width: 72px;
+  width: 100%;
   border-bottom:solid;
-  border-color:#f13224;
+  border-color: rgb(65, 209, 65);
   border-bottom-width:2px;
   border-bottom-left-radius: 60rpx;
 }

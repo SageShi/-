@@ -46,7 +46,6 @@
 报修页面css
 */
 textarea{
-  border: 1;
   margin-top: 20rpx;
   margin-left: 30rpx;
 }

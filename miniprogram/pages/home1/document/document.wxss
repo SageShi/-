@@ -42,3 +42,83 @@
   height: 100%;
   padding: 80rpx 0;
 }
+/*
+搜索框css
+*/
+.search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border-top: 1rpx solid #FFF;
+  border-bottom: 1rpx solid #FFF;
+  margin-bottom: 10px;
+}
+.icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid rgb(180, 180, 189);
+  height: 30px;
+}
+.search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09BB07;
+  white-space: nowrap;
+  font-size: 14px;
+}
+/*
+视频和文档列表css
+*/
+.vedioItem{
+  margin-left: 35px;
+  height:35px;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+  border-bottom-color: rgb(180, 180, 189);
+  margin-bottom: 10px;
+}
+
+.vedioIcon{
+   width:30px;
+   height:30px;
+   float: left;
+   margin-left: 10px;
+}
+
+.vedioName{
+  margin-left: 20px;
+  font-size: 18px;
+  color: rgb(78, 78, 80);
+}
+
+.enterIcon{
+   width:15px;
+   height:15px;
+   margin-left:70%;
+}

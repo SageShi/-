@@ -6,6 +6,40 @@ Page({
    */
   data: {
     currentData: 0,
+    vedioList: [
+      {
+        name:'test',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+      }
+    ],
+    docList: [
+      {
+        name: 'test',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        type: 'icon/PDF.png',
+      },
+      {
+        name: 'test',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        type: 'icon/PDF.png',
+      },
+      {
+        name: 'test',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        type: 'icon/WORD.png',
+      },
+      {
+        name: 'test',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        type: 'icon/PDF.png',
+      }
+    ],
+  },
+  clickVideo:function(e){
+    var src = e.currentTarget.dataset.vedio // e.currentTarget
+    wx.navigateTo({
+      url: '../video/video?src='+src
+    })
   },
   /**
    * 生命周期函数--监听页面加载

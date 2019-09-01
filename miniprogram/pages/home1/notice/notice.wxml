@@ -38,7 +38,7 @@
             <block wx:for="{{deviceList}}">
         <view class='cardout'>
           <view class='cardin'>
-            <view style='border-bottom:solid;border-color:rgba(102, 102, 105, 0.863);border-bottom-width:3rpx;'>
+            <view style='border-bottom:solid;border-color:#7cc75f;;border-bottom-width:3rpx;'>
               <label>{{item.building+'-'+item.room+'-'+item.device}}</label>
             </view>
             <view>

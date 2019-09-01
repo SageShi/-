@@ -48,7 +48,13 @@
               <input placeholder='房号'>{{roomNum}}</input>
           </view>
       </view>
-      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext'>{{description}}</textarea>
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/dsp.png'/>
+              <input placeholder='学科'>{{discipline}}</input>
+          </view>
+      </view>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext'>{{content}}</textarea>
       <label class='date'>{{Date}}</label>
       <button class='submitbutton'>提交</button>
       </form>
