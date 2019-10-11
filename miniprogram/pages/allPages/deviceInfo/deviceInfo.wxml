@@ -1,0 +1,29 @@
+<!--pages/home1/deviceInfo/deviceInfo.wxml-->
+<!-- 搜索框 -->
+    <view class="search-bar">
+        <view class="search-bar__form">
+            <view class="search-bar__box">
+                <icon class="icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="search-bar__input" placeholder="请输入楼号和房号"/>
+            </view>
+        </view>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+    </view>
+    <!-- 设备通知列表 -->
+    <block wx:for="{{deviceList}}">
+    <view class='cardout'>
+      <view class='cardin'>
+        <view style='border-bottom:solid;border-color:#efb336;;border-bottom-width:3rpx;padding-bottom:5rpx'>
+          <image src="icon/cpt-r.png" style="height:65rpx;width:65rpx;margin-right:30rpx"></image>
+          <label>{{item.building+'-'+item.room+'-'+item.device}}</label>
+        </view>
+        <view style="margin-top:10rpx;">
+          <text style="word-break:break-all;">{{item.content}}</text>
+        </view>
+        <view style='text-align:right;margin-top:10rpx;'>
+          <label style='text-align:right;'>{{item.date}}</label>
+        </view>
+      </view>
+    </view>
+  </block>

@@ -8,12 +8,13 @@
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
-    "pages/home1/advice/advice",
-    "pages/home1/deviceInfo/deviceInfo",
-    "pages/home1/document/document",
-    "pages/home1/notice/notice",
-    "pages/home1/repair/repair", 
-    "pages/home1/video/video"
+    "pages/allPages/deviceInfo/deviceInfo",
+    "pages/allPages/document/document",
+    "pages/allPages/notice/notice",
+    "pages/allPages/repair/repair", 
+    "pages/allPages/video/video",
+    "pages/allPages/home/home",
+    "pages/allPages/setting/setting"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -24,31 +25,26 @@
   },
   "sitemapLocation": "sitemap.json",
     "tabBar": {
+      "selectedColor": "#efb336",
       "list": [
         {
-          "pagePath": "pages/index/index",
-          "text": "个人",
-          "iconPath": "icon/user.png",
-          "selectedIconPath": "icon/user-s.png"
+          "pagePath": "pages/allPages/home/home",
+          "text": "主页",
+          "iconPath": "icon/home.png",
+          "selectedIconPath": "icon/home-s.png"
         },
         {
-          "pagePath": "pages/home1/repair/repair",
+          "pagePath": "pages/allPages/repair/repair",
           "text": "留言",
           "iconPath": "icon/mes.png",
           "selectedIconPath": "icon/mes-s.png"
         },
         {
-          "pagePath": "pages/home1/notice/notice",
-          "text": "通知",
-          "iconPath": "icon/notice.png",
-          "selectedIconPath": "icon/notice-s.png"
-        },
-        {
-          "pagePath": "pages/home1/document/document",
-          "text": "使用",
-          "iconPath": "icon/doc.png",
-          "selectedIconPath": "icon/doc-s.png"
-        }     
+          "pagePath": "pages/index/index",
+          "text": "个人",
+          "iconPath": "icon/user.png",
+          "selectedIconPath": "icon/user-s.png"
+        }
       ]
     }
 }

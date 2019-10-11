@@ -1,0 +1,19 @@
+<navigation-button bindmyevent="onJumpTap"></navigation-button>
+<view class="notice">
+  <block wx:for="{{noticeList}}">
+    <view class='cardout'>
+      <view class='cardin'>
+        <view style='border-bottom:solid;border-color:#efb336;;border-bottom-width:3rpx;padding-bottom:5rpx'>
+          <image src="icon/manager.png" style="height:65rpx;width:65rpx;margin-right:30rpx"></image>
+          <label>{{item.host}}</label>
+        </view>
+        <view style="margin-top:10rpx;">
+          <text style="word-break:break-all;">{{item.content}}</text>
+        </view>
+        <view style='text-align:right;margin-top:10rpx;'>
+          <label style='text-align:right;'>{{item.date}}</label>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

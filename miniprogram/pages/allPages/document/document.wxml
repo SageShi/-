@@ -1,0 +1,43 @@
+<!--Tab布局-->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>文档</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>视频</view>
+</view>
+<!-- 搜索框 -->
+<view class="search-bar">
+    <view class="search-bar__form">
+        <view class="search-bar__box">
+            <icon class="icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="search-bar__input" placeholder="请输入视频或文档关键字"/>
+        </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+</view>
+  <!--内容布局-->
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+    <!-- 文档页面 -->
+    <swiper-item class='swiper'>
+      <view wx:for="{{docList}}" wx:key="*this">
+        <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
+          <image src="{{item.type}}" class="vedioIcon"></image>
+          <view  class='vedioItem'>
+            <text class='vedioName'>{{item.name}}</text>
+            <image src="icon/enter.png" class="enterIcon"></image>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <!-- 视频页面 -->
+    <swiper-item class='swiper'>
+      <view wx:for="{{vedioList}}" wx:key="*this">
+        <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
+          <image src="icon/vedio.png" class="vedioIcon"></image>
+          <view  class='vedioItem'>
+            <text class='vedioName'>{{item.name}}</text>
+            <image src="icon/enter.png" class="enterIcon"></image>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>

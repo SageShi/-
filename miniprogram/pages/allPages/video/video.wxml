@@ -1,0 +1,21 @@
+<!-- 搜索框 -->
+<view class="search-bar">
+    <view class="search-bar__form">
+        <view class="search-bar__box">
+            <icon class="icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="search-bar__input" placeholder="请输入视频或文档关键字"/>
+        </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+</view>
+<!-- 视频列表 -->
+  <view wx:for="{{vedioList}}" wx:key="*this">
+    <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
+      <image src="icon/vedio.png" class="vedioIcon"></image>
+      <view  class='vedioItem'>
+        <text class='vedioName'>{{item.name}}</text>
+        <image src="icon/enter.png" class="enterIcon"></image>
+      </view>
+    </view>
+  </view>

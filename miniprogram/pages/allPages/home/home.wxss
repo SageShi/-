@@ -1,0 +1,15 @@
+.notice {
+margin-top: 10rpx;
+border-top: 1px solid #ccc;
+}
+.cardout {
+  background: rgba(204, 204, 204, 0.295);
+  padding-top: 30rpx;
+}
+
+.cardin {
+  background-color: #fff;
+  color: rgba(102, 102, 105, 0.863);
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  font-size:14px;
+}

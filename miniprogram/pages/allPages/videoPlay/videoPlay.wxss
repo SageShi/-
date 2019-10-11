@@ -1,0 +1,6 @@
+/* pages/home1/video/video.wxss */
+.myvedio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
