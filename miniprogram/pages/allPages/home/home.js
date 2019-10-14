@@ -46,7 +46,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  /*   const db = wx.cloud.database({});
+    const cont = db.collection('repair');
+    db.collection('repair').get({
+      success: res => {
+        this.setData({
+          deviceList: res.data
+        })
+      }
+    })
 
+    const cont1 = db.collection('advice');
+    db.collection('advice').get({
+      success: res => {
+        console.log(res.data[0]);
+
+        this.setData({
+          noticeList: res.data
+        })
+      }
+    })*/
   },
 
   /**

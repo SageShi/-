@@ -16,13 +16,13 @@
       <view class='cardin'>
         <view style='border-bottom:solid;border-color:#efb336;;border-bottom-width:3rpx;padding-bottom:5rpx'>
           <image src="icon/cpt-r.png" style="height:65rpx;width:65rpx;margin-right:30rpx"></image>
-          <label>{{item.building+'-'+item.room+'-'+item.device}}</label>
+          <label>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>
         </view>
         <view style="margin-top:10rpx;">
-          <text style="word-break:break-all;">{{item.content}}</text>
+          <text style="word-break:break-all;">{{item.Description}}</text>
         </view>
         <view style='text-align:right;margin-top:10rpx;'>
-          <label style='text-align:right;'>{{item.date}}</label>
+          <label style='text-align:right;'>{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
         </view>
       </view>
     </view>

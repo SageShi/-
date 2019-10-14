@@ -4,7 +4,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+ /* data: {
     currentData: 0,
     deviceList: [
       {
@@ -43,7 +43,12 @@ Page({
         date: '2019-8-15'
       }
     ]
-  },
+  },*/
+
+    data: {
+      book_list: []
+    },
+    
   //快速查找
   searchNotice: function () {
     console.log('success')
@@ -53,7 +58,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const db = wx.cloud.database({});
+    const cont = db.collection('repair');
+    // 创建一个变量来保存页面page示例中的this, 方便后续使用
+    var _this = this;
+    db.collection('repair').get({
+      success: res => {
+        console.log(res.data[3]);
 
+        this.setData({
+          deviceList: res.data
+        })
+      }
+    })
   },
 
   /**
