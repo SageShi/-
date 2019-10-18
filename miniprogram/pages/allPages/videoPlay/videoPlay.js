@@ -13,7 +13,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      src: options.src,
+      vid: options.vid || '',
+      id: options.id || ''
     });
   },
 

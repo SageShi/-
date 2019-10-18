@@ -28,7 +28,8 @@
         </view>
       </view>
     </swiper-item>
-    <!-- 视频页面 -->
+
+    <!-- 视频页面
     <swiper-item class='swiper'>
       <view wx:for="{{vedioList}}" wx:key="*this">
         <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
@@ -39,5 +40,5 @@
           </view>
         </view>
       </view>
-    </swiper-item>
-  </swiper>
+    </swiper-item>-->
+  </swiper> 

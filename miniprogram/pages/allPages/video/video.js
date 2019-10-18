@@ -9,36 +9,22 @@ Page({
     vedioList: [
       {
         name:'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        src: 'https://v.qq.com/x/page/k0723gblmlu.html',//非必要
+        vid:'k0723gblmlu' //必要
+      },
+      {
+        name:"test1",
+        src: 'https://v.qq.com/x/page/a07554e8r4i.html',//非必要
+        vid: 'a07554e8r4i'
       }
-    ],
-    docList: [
-      {
-        name: 'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-        type: 'icon/PDF.png',
-      },
-      {
-        name: 'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-        type: 'icon/PDF.png',
-      },
-      {
-        name: 'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-        type: 'icon/WORD.png',
-      },
-      {
-        name: 'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-        type: 'icon/PDF.png',
-      }
-    ],
+    ]
   },
+  
   clickVideo:function(e){
-    var src = e.currentTarget.dataset.vedio // e.currentTarget
+    var vid=e.currentTarget.dataset.vid;
+    var id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../videoPlay/videoPlay?src='+src
+      url: '../videoPlay/videoPlay?vid='+vid+'&id'+id
     })
   },
   /**

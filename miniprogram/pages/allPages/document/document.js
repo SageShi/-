@@ -6,12 +6,6 @@ Page({
    */
   data: {
     currentData: 0,
-    vedioList: [
-      {
-        name:'test',
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-      }
-    ],
     docList: [
       {
         name: 'test',
