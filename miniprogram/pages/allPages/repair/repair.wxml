@@ -60,7 +60,7 @@
           </view>
       </view>
       <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' bindinput="contentInput">{{content}}</textarea>
-      <label class='date'>{{Date}}</label>
+      <!-- <label class='date'>{{Date}}</label> -->
       <button class='submitbutton' bindtap="adviceClick">提交</button>
       </form>
       </view>

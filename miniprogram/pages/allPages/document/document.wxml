@@ -18,18 +18,16 @@
   <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
     <!-- 文档页面 -->
     <swiper-item class='swiper'>
-      <view wx:for="{{docList}}" wx:key="*this">
-        <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
-          <image src="{{item.type}}" class="vedioIcon"></image>
-          <view  class='vedioItem'>
-            <text class='vedioName'>{{item.name}}</text>
+      <view wx:for="{{fileIDList}}" wx:key="*this">
+        <view  bindtap='clickDoc' data-fileid='{{item.fileid}}'>
+          <view  class='docItem'>
+            <text class='docName'>{{item.fileid}}</text>
             <image src="icon/enter.png" class="enterIcon"></image>
           </view>
         </view>
       </view>
     </swiper-item>
-
-    <!-- 视频页面
+    <!-- 视频页面 -->
     <swiper-item class='swiper'>
       <view wx:for="{{vedioList}}" wx:key="*this">
         <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
@@ -40,5 +38,5 @@
           </view>
         </view>
       </view>
-    </swiper-item>-->
-  </swiper> 
+    </swiper-item>
+  </swiper>

@@ -72,5 +72,5 @@ page {
 }
 .setting-icon {
   width: 50rpx;
-  height: 50rpx;s
+  height: 50rpx;
 }

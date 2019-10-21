@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentData: 0,
+    /*currentData: 0,
     docList: [
       {
         name: 'test',
@@ -27,19 +27,28 @@ Page({
         src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         type: 'icon/PDF.png',
       }
-    ],
+    ],*/
   },
-  clickVideo:function(e){
-    var src = e.currentTarget.dataset.vedio // e.currentTarget
+  clickDoc:function(e){
+    /*var src = e.currentTarget.dataset.vedio // e.currentTarget
     wx.navigateTo({
       url: '../video/video?src='+src
-    })
+    })*/
+      wx.cloud.downloadFile({
+        fileID: 'cloud://xiaochengxu-o6nj9.7869-xiaochengxu-o6nj9-1259225399/' + e.currentTarget.dataset.fileid,
+         success: res => {         
+              // 返回临时文件路径
+              console.log(res.tempFilePath),
+                wx.openDocument({
+                  filePath: res.tempFilePath,
+                  success: function (res) {
+                    console.log('打开文档成功')
+                  }
+                })
+            }
+          })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  },
+
   //获取当前滑块的index
   bindchange: function (e) {
     const that = this;
@@ -64,7 +73,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const db = wx.cloud.database({});
+    const cont = db.collection('fileID');
+    // 创建一个变量来保存页面page示例中的this, 方便后续使用
+    var _this = this;
+    /*cont.add({
+      data:{
+        fileid: '2018 Multimedia 02 傅立叶变换.ppt'
+      },
+       success: res => {
+        // 在返回结果中会包含新创建的记录的 _id
+        this.setData({
 
+        })
+       }
+    }),*/
+    db.collection('fileID').get({
+      success: res => {
+        this.setData({
+          fileIDList: res.data
+        })
+      }
+    })
   },
 
   /**
