@@ -7,61 +7,60 @@
   <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
     <swiper-item class='swiper'>
       <view style='height=100%'>
-      <form style='height=100%'>
+      <form style='height=100%' bindsubmit="repairClick">
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
-            <view class='in'>
-                <image src='icon/building.png'/>
-                <!-- <input placeholder='楼号'>{{archNum}}</input> -->
-                {{archNum}}
-            </view>
+            <image src='icon/building.png'/>
+            <input class='in' value="{{repairForm.archNum}}" name="rarchNum">
+            </input>
         </view>
         <view class='out'>
-            <view class='in'>
-                <image src='icon/room.png'/>
-                <!-- <input placeholder='房号'>{{roomNum}}</input> -->
-                {{roomNum}}
-            </view>
+            <image src='icon/room.png'/>
+            <input class='in' value="{{repairForm.roomNum}}" name="rroomNum">
+            </input>
         </view>
-        </picker>
+      </picker>
       <view class='out'>
           <view class='in'>
               <image src='icon/cpt-g.png'/>
-              <input placeholder='机器号' bindinput="mechaNumInput">{{mechaNum}}</input>
+              <input placeholder='机器号' value="{{repairForm.mechaNum}}" name="mechaNum" type="number"></input>
           </view>
       </view>
-      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' bindinput="descriptionInput">{{description}}</textarea>
-      <!--<label class='date'>{{Date}}</label>-->
-      <button class='submitbutton' bindtap="repairClick">提交</button>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' value="{{repairForm.description}}" name="description"></textarea>
+      <button class='submitbutton' form-type="submit">提交</button>
       </form>
       </view>
     </swiper-item>
+    <!-- 第二个 -->
     <swiper-item class='swiper'>
       <view style='height=100%'>
-      <form style='height=100%'>
+      <form style='height=100%' bindsubmit="adviceClick">
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
-            <view class='in'>
-                <image src='icon/building.png'/>
-                {{archNum}}
-            </view>
+            <image src='icon/building.png'/>
+            <input class='in' value="{{adviceForm.archNum}}" name="aarchNum">
+            </input>
         </view>
         <view class='out'>
-            <view class='in'>
-                <image src='icon/room.png'/>
-                {{roomNum}}
-            </view>
+            <image src='icon/room.png'/>
+            <input class='in' value="{{adviceForm.roomNum}}" name="aroomNum">
+            </input>
         </view>
       </picker>
       <view class='out'>
           <view class='in'>
               <image src='icon/dsp.png'/>
-              <input placeholder='学科' bindinput="subjectInput">{{subject}}</input>
+              <input placeholder='学科' value="{{adviceForm.subject}}" name="subject"></input>
           </view>
       </view>
-      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' bindinput="contentInput">{{content}}</textarea>
-      <!-- <label class='date'>{{Date}}</label> -->
-      <button class='submitbutton' bindtap="adviceClick">提交</button>
+      <textarea placeholder='请输入具体建议内容（大于三十字）' class='inputtext' value="{{adviceForm.content}}" name="content"></textarea>
+      <checkbox-group bindchange="nonName">
+            <view class="checkboxWrap">
+            <checkbox value="匿名提交"/>
+            <text>匿名提交</text>
+      </view>
+      </checkbox-group>    
+      <button class='submitbutton' form-type="submit">提交</button>
       </form>
       </view>
     </swiper-item>

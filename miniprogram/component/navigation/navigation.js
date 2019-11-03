@@ -29,9 +29,9 @@ Component({
                     "path": "/pages/allPages/document/document"
                 },
                 {
-                    "img": "icon/connect.png",
-                    "name": "联系方式",
-                    "path": "/pages/allPages/deviceInfo"
+                    "img": "icon/advice.png",
+                    "name": "机房建议",
+                    "path": "/pages/allPages/advice/advice"
                 }
             ]
         ]

@@ -8,9 +8,7 @@
   display: -webkit-flex;
   display: flex;
   box-sizing: border-box;
-  background-color: #FFF;
-  border-top: 1rpx solid #FFF;
-  border-bottom: 1rpx solid #FFF;
+  background: linear-gradient(#efb336,#fff);
   margin-bottom: 10px;
 }
 .icon-search_in-box {
@@ -44,37 +42,46 @@
 .search-bar__cancel-btn {
   margin-left: 10px;
   line-height: 28px;
-  color: #09BB07;
+  color: #FFF;
   white-space: nowrap;
   font-size: 14px;
 }
 /*
 视频列表
 */
-.vedioItem{
-  margin-left: 35px;
+.vedioItemOutter {
+  height: 35px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-bottom: 10px;
+}
+.vedioItemInner{
   height:35px;
   border-bottom-style: solid;
   border-bottom-width: 2rpx;
   border-bottom-color: rgb(180, 180, 189);
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 2;
 }
 
 .vedioIcon{
    width:30px;
    height:30px;
-   float: left;
-   margin-left: 10px;
+   margin-right: 20rpx;
 }
 
 .vedioName{
-  margin-left: 20px;
-  font-size: 18px;
-  color: rgb(78, 78, 80);
+  font-size: 17px;
+  color: rgba(78, 78, 80, 0.788);
 }
 
 .enterIcon{
    width:15px;
    height:15px;
-   margin-left:70%;
+   margin-right: 30rpx;
 }

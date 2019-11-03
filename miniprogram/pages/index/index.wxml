@@ -1,6 +1,5 @@
 <!--index.wxml-->
-<view class="container">
-
+<view>
   <!-- 用户 openid -->
   <view class="userinfo">
     <button 
@@ -9,15 +8,43 @@
       class="userinfo-avatar"
       style="background-image: url({{avatarUrl}})"
     ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
+      <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
   </view>
   <!-- 设置 -->
   <view class="setting">
-    <navigator url="../allPages/setting/setting" open-type="navigate" class="setting-text">
-      <image src="setting.png" class="setting-icon"></image>
-      <text style="margin-left:20rpx;">设置</text>
-    </navigator>
+    <view bindtap="toName" class="setting-container">
+      <image src="icon/name.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{name}}</text>
+    </view>
   </view>
+    <view class="setting">
+      <view bindtap="toStudentId" class="setting-container">
+      <image src="icon/studentId.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{studentId}}</text>
+    </view>
+  </view>
+    <view class="setting">
+      <view bindtap="toSchool" class="setting-container">
+      <image src="icon/school.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{school}}</text>
+    </view>
+  </view>
+    <view class="setting">
+      <view bindtap="toMajor" class="setting-container">
+      <image src="icon/major.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{major}}</text>
+    </view>
+  </view>
+    <view class="setting">
+      <view bindtap="toGrade" class="setting-container">
+      <image src="icon/grade.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{grade}}</text>
+    </view>
+    </view>
+      <view class="setting">
+      <view bindtap="toClass" class="setting-container">
+      <image src="icon/class.png" class="setting-icon"></image>
+      <text style="margin-left:30rpx;">{{uclass}}</text>
+    </view>
+    </view>
 </view>

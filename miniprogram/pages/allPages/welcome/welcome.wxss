@@ -1,0 +1,45 @@
+/* miniprogram/pages/welcome.wxss */
+/** 头像部分**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:linear-gradient(#efb336,#FFF);
+  width: 100%;
+  height:600rpx；
+}
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+  margin-top: 125rpx;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+/** 选框部分**/
+.radio-group{
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height:600rpx；
+}
+.radio{
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+button {
+  margin-top: 120rpx;
+  width: 400rpx;
+  background:#efb336;
+  }

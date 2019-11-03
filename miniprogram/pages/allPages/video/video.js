@@ -1,10 +1,12 @@
 // pages/home1/document/document.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isManager: app.globalData.isManager,
     currentData: 0,
     vedioList: [
       {
@@ -21,6 +23,7 @@ Page({
   },
   
   clickVideo:function(e){
+    console.log(this.data.isManager)
     var vid=e.currentTarget.dataset.vid;
     var id=e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -31,6 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
   },
   //获取当前滑块的index
   bindchange: function (e) {

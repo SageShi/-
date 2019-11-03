@@ -1,0 +1,24 @@
+<!--miniprogram/pages/allPages/advice.wxml-->
+  <block wx:for="{{adviceList}}">
+    <view class='cardout'>
+      <view class='cardin' bindtap="toDetail" data-id="{{item._id}}">
+        <view class="avatarAndTitle">
+          <image src="{{item.HolderAvatarUrl}}" class='avatar'></image>
+          <view class="title">
+          <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+          <label style="font-size:10px">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+          </view>
+        </view>
+        <view style="margin-top:10rpx;">
+          <text style="word-break:break-all;">{{item.Content}}</text>
+        </view>
+        <view style='text-align:right;margin-top:10rpx;'>
+          <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.Subject}}</label>
+        </view>
+        <view class="supportBox">
+        <image src="icon/view.png" class="support" data-id="{{item._id}}"></image>
+        <text>{{item.View}}</text>
+        </view>
+      </view>
+    </view>
+  </block>

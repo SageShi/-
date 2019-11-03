@@ -1,76 +1,51 @@
 /**index.wxss**/
-
-page {
-  background: #f6f6f6;
+/** 头像部分**/
+.userinfo {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-}
-
-.userinfo, .setting {
-  margin-top: 30rpx;
-  height: 140rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  transition: all 300ms ease;
+  background:linear-gradient(#efb336,#FFF);
+  width: 100%;
+  height:600rpx；
 }
 
 .userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 150rpx;
+  height: 150rpx;
   margin: 20rpx;
   border-radius: 50%;
   background-size: cover;
   background-color: white;
+  margin-top: 125rpx;
 }
 
 .userinfo-avatar:after {
   border: none;
 }
 
-.userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
-  background-size: cover;
-}
-
-.userinfo-nickname::after {
-  border: none;
-}
-
+/**资料部分**/
 .setting {
   height: auto;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  transition: all 300ms ease;
   padding: 0 0 0 40rpx;
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
+  font-family:cursive;
 }
-
-.setting-text {
-  line-height: 52px;
-  font-size: 34rpx;
-  color: #000;
-  width: 100%;
-}
-
 .setting-container {
-  width: 100%;
-  height: 400rpx;
-  padding: 20rpx 20rpx 20rpx 0;
   display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
 .setting-icon {
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }

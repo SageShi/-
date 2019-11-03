@@ -9,11 +9,18 @@
     <!-- 搜索按钮,调用搜索查询方法 -->
     <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
 </view>
+
+<view wx:if="{{isManager}}">
+<view class="manegerVideo">
+    <button bindtap="uploadVideo" >上传</button>
+  </view>
+</view>
+
 <!-- 视频列表   -->
   <view wx:for="{{vedioList}}" wx:key="*this">
-    <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'>
+    <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'  class='vedioItemOutter'>
       <image src="icon/vedio.png" class="vedioIcon"></image>
-      <view  class='vedioItem'>
+      <view class='vedioItemInner'>
         <text class='vedioName'>{{item.name}}</text>
         <image src="icon/enter.png" class="enterIcon"></image>    
       </view>

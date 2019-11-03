@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/allPages/welcome/welcome",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -10,49 +11,50 @@
     "pages/openapi/openapi",
     "pages/allPages/deviceInfo/deviceInfo",
     "pages/allPages/document/document",
-    "pages/allPages/notice/notice",
-    "pages/allPages/repair/repair", 
+    "pages/allPages/firstSetting/firstSetting",
+    "pages/allPages/repair/repair",
     "pages/allPages/video/video",
     "pages/allPages/videoPlay/videoPlay",
     "pages/allPages/home/home",
-    "pages/allPages/setting/setting"
+    "pages/allPages/setting/setting",
+    "pages/allPages/advice/advice",
+    "pages/allPages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "机房智多星",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-    "tabBar": {
-      "selectedColor": "#efb336",
-      "list": [
-        {
-          "pagePath": "pages/allPages/home/home",
-          "text": "主页",
-          "iconPath": "icon/home.png",
-          "selectedIconPath": "icon/home-s.png"
-        },
-        {
-          "pagePath": "pages/allPages/repair/repair",
-          "text": "留言",
-          "iconPath": "icon/mes.png",
-          "selectedIconPath": "icon/mes-s.png"
-        },
-        {
-          "pagePath": "pages/index/index",
-          "text": "个人",
-          "iconPath": "icon/user.png",
-          "selectedIconPath": "icon/user-s.png"
-        }
-      ]
-    },
-
-    "plugins":{
-      "tencentvideo":{
-        "version":"1.3.6",
-        "provider":"wxa75efa648b60994b"
+  "tabBar": {
+    "selectedColor": "#efb336",
+    "list": [
+      {
+        "pagePath": "pages/allPages/home/home",
+        "text": "主页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home-s.png"
+      },
+      {
+        "pagePath": "pages/allPages/repair/repair",
+        "text": "留言",
+        "iconPath": "icon/mes.png",
+        "selectedIconPath": "icon/mes-s.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "个人",
+        "iconPath": "icon/user.png",
+        "selectedIconPath": "icon/user-s.png"
       }
+    ]
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.6",
+      "provider": "wxa75efa648b60994b"
     }
+  }
 }

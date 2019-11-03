@@ -1,29 +1,41 @@
 <!--pages/home1/deviceInfo/deviceInfo.wxml-->
 <!-- 搜索框 -->
-    <view class="search-bar">
-        <view class="search-bar__form">
-            <view class="search-bar__box">
-                <icon class="icon-search_in-box" type="search" size="14"></icon>
-                <input type="text" class="search-bar__input" placeholder="请输入楼号和房号"/>
-            </view>
-        </view>
+<form bindsubmit="fastSearch">
         <!-- 搜索按钮,调用搜索查询方法 -->
-        <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+        <button  bindtap='showAll' size="mini">显示全部</button>
+        <button  form-type="submit" size="mini" style="background-color:#efb336;color:white;float:right;margin:10rpx;">快速搜索</button>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
+        <view class='out'>
+            <image src='icon/building.png'/>
+            <input class='in' value="{{archNum}}" name="archNum" placeholder="输入楼号快速搜索">
+            </input>
+        </view>
+        <view class='out'>
+            <image src='icon/room.png'/>
+            <input class='in' value="{{roomNum}}" name="roomNum" placeholder="输入房号快速搜索">
+            </input>
+        </view>
+      </picker>
+</form>
+    <view class="cCardout">
+    <text class="cCardin">坏设备列表({{deviceListShow.length}})</text>
     </view>
     <!-- 设备通知列表 -->
-    <block wx:for="{{deviceList}}">
-    <view class='cardout'>
+    <block wx:for="{{deviceListShow}}">
       <view class='cardin'>
-        <view style='border-bottom:solid;border-color:#efb336;;border-bottom-width:3rpx;padding-bottom:5rpx'>
-          <image src="icon/cpt-r.png" style="height:65rpx;width:65rpx;margin-right:30rpx"></image>
-          <label>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>
+        <view class="avatarAndTitle">
+          <image src="{{item.HolderAvatarUrl}}" class='avatar'></image>
+          <view class="title">
+          <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+          <label style="font-size:10px">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+          </view>
         </view>
         <view style="margin-top:10rpx;">
           <text style="word-break:break-all;">{{item.Description}}</text>
         </view>
         <view style='text-align:right;margin-top:10rpx;'>
-          <label style='text-align:right;'>{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+          <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>          
         </view>
       </view>
-    </view>
   </block>
+  

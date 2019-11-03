@@ -1,8 +1,3 @@
-<!--Tab布局-->
-<view class='topTabSwiper'>
-    <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>文档</view>
-    <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>视频</view>
-</view>
 <!-- 搜索框 -->
 <view class="search-bar">
     <view class="search-bar__form">
@@ -22,18 +17,6 @@
         <view  bindtap='clickDoc' data-fileid='{{item.fileid}}'>
           <view  class='docItem'>
             <text class='docName'>{{item.fileid}}</text>
-            <image src="icon/enter.png" class="enterIcon"></image>
-          </view>
-        </view>
-      </view>
-    </swiper-item>
-    <!-- 视频页面 -->
-    <swiper-item class='swiper'>
-      <view wx:for="{{vedioList}}" wx:key="*this">
-        <view  bindtap='clickVideo' data-vedio='{{item.src}}'>
-          <image src="icon/vedio.png" class="vedioIcon"></image>
-          <view  class='vedioItem'>
-            <text class='vedioName'>{{item.name}}</text>
             <image src="icon/enter.png" class="enterIcon"></image>
           </view>
         </view>

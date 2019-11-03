@@ -4,54 +4,53 @@ Page({
   /**
    * 页面的初始数据
    */
- /* data: {
-    currentData: 0,
-    deviceList: [
-      {
-        building: 'B5',
-        room: '233',
-        device: '23',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        building: 'B5',
-        room: '233',
-        device: '23',
-        content: '无法开机jfjajfiodsjiofjdsfiojasdiofjdsiofjiosadfjioasdfjiodsfjiodfjiodsfjioasfjoiasfdjoiadfssjiodsfjiosdfjoidsfiodsfjodsfjiodsfjiodsfjiodsfjiofjoisdjfoiasjfio',
-        date: '2019-8-15'
-      },
-      {
-        building: 'B5',
-        room: '233',
-        device: '23',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        building: 'B5',
-        room: '233',
-        device: '23',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        building: 'B5',
-        room: '233',
-        device: '23',
-        content: '无法开机',
-        date: '2019-8-15'
-      }
-    ]
-  },*/
-
     data: {
-      book_list: []
+      deviceListOriginal: [],
+      deviceListShow:[],
+      roomNum:'',
+      archNum:'',
+      multiArray: [['B7'], ['133', '138', '231', '233', '238', '331', '333', '336', '338A', '338B']],
     },
-    
+  /**
+* 选择器
+*/
+  bindMultiPickerChange: function (e) {
+    this.setData({
+      archNum: this.data.multiArray[0][e.detail.value[0]],
+      roomNum: this.data.multiArray[1][e.detail.value[1]]
+    })
+  },
   //快速查找
-  searchNotice: function () {
-    console.log('success')
+  fastSearch: function () {
+    var that = this
+    if (that.data.archNum == '' ||that.data.roomNum == ''){
+      wx.showModal({
+        title: '提示',
+        content: '请完整输入楼号和房号',
+        showCancel:false
+      })
+    } else {
+        var newArray = []
+      var temp = that.data.deviceListOriginal
+        temp.forEach(function(item,index){
+          if (item.ArchNum == that.data.archNum){
+            if (item.RoomNum == that.data.roomNum) {
+              newArray.push(item)
+            }
+          }
+        })
+        that.setData({
+          deviceListShow:newArray
+        })
+    }
+  },
+  //显示全部
+  showAll:function(){
+    this.setData({
+      deviceListShow:this.data.deviceListOriginal,
+      roomNum:'',
+      archNum:''
+    })
   },
 
   /**
@@ -64,10 +63,9 @@ Page({
     var _this = this;
     db.collection('repair').get({
       success: res => {
-        console.log(res.data[3]);
-
         this.setData({
-          deviceList: res.data
+          deviceListOriginal: res.data,
+          deviceListShow:res.data
         })
       }
     })

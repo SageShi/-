@@ -1,0 +1,25 @@
+<!--miniprogram/pages/welcome.wxml-->
+<view>
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+      <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
+  </view>
+
+<!-- 选学生还是教师 -->
+  <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{Identity}}" wx:key="index">
+          <radio value="{{item.name}}" bindtap='radio' checked="{{item.checked}}"/>{{item.name}}
+        </label>
+  </radio-group>
+
+
+  <button bindtap="checkIn">进入</button>
+</view>
+
+

@@ -1,48 +1,4 @@
 /*
-选项卡css
-*/
-.tab {
-  float: left;
-  width: 50%;
-  text-align: center;
-  padding: 10rpx 0;
-}
- 
-.topTabSwiper {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  zoom: 1;
-}
- 
-.topTabSwiper:after {
-  content: "";
-  clear: both;
-  display: block;
-}
- 
-.tabBorer-A {
-  border-bottom: 1px solid #09BB07;
-  border-width: 2px;
-  color:  #09BB07;
-}
-
-.tabBorer-B {
-  border-bottom: 1px solid rgb(178, 180, 178);
-  color: rgb(178, 180, 178);
-  border-width: 2px;
-}
- 
-.swiper {
-  width: 100%;
-}
- 
-.swiper_con {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  padding: 80rpx 0;
-}
-/*
 搜索框css
 */
 .search-bar {
@@ -52,9 +8,7 @@
   display: -webkit-flex;
   display: flex;
   box-sizing: border-box;
-  background-color: #FFF;
-  border-top: 1rpx solid #FFF;
-  border-bottom: 1rpx solid #FFF;
+  background: linear-gradient(#efb336,#fff);
   margin-bottom: 10px;
 }
 .icon-search_in-box {
@@ -88,37 +42,33 @@
 .search-bar__cancel-btn {
   margin-left: 10px;
   line-height: 28px;
-  color: #09BB07;
+  color: #FFF;
   white-space: nowrap;
   font-size: 14px;
 }
 /*
 视频和文档列表css
 */
-.vedioItem{
-  margin-left: 35px;
+.docItem{
   height:35px;
   border-bottom-style: solid;
   border-bottom-width: 2rpx;
   border-bottom-color: rgb(180, 180, 189);
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.vedioIcon{
-   width:30px;
-   height:30px;
-   float: left;
-   margin-left: 10px;
-}
-
-.vedioName{
-  margin-left: 20px;
-  font-size: 18px;
-  color: rgb(78, 78, 80);
+.docName{
+  margin-left: 20rpx;
+  font-size: 15px;
+  color: rgba(78, 78, 80, 0.788);
+  flex-grow: 3;
 }
 
 .enterIcon{
    width:15px;
    height:15px;
-   margin-left:70%;
+   margin-right: 20rpx;
 }

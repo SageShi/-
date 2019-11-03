@@ -4,49 +4,84 @@ Page({
    * 页面的初始数据
    */
   data: {
-    noticeList: [
-      {
-        host:'管理员',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        host: '管理员',
-        content: '无法开机jfjajfiodsjiofjdsfiojasdiofjdsiofjiosadfjioasdfjiodsfjiodfjiodsfjioasfjoiasfdjoiadfssjiodsfjiosdfjoidsfiodsfjodsfjiodsfjiodsfjiodsfjiofjoisdjfoiasjfio',
-        date: '2019-8-15'
-      },
-      {
-        host: '管理员',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        host: '管理员',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        host: '管理员',
-        content: '无法开机',
-        date: '2019-8-15'
-      },
-      {
-        host: '管理员',
-        content: '无法开机test',
-        date: '2019-8-15'
-      }
-    ]
+    noticeList: [],
+    imgList: [
+    ],
+    indicatorDots: true, //是否显示面板指示点
+    autoplay: true, //是否自动切换
+    interval: 3000, //自动切换时间间隔,3s
+    duration: 1000, //  滑动动画时长1s
   },
-
+  //打电话
+  callManager:function(){
+    wx.makePhoneCall({
+      phoneNumber: '15875206987'
+    })
+  },
+  //获取广告图
+  getImages() {
+    let that = this;
+    let imgArr = [];
+    wx.cloud.database().collection("advertises").get({
+      success(res) {
+        that.setData({
+          imgList: res.data
+        })
+      },
+      fail(res) {
+        console.log("请求失败", res)
+      }
+    })
+  },
+  //获取通知列表
+  getNotice() {
+    let that = this;
+    let imgArr = [];
+    wx.cloud.database().collection("notice").get({
+      success(res) {
+        that.setData({
+          noticeList: res.data
+        })
+      },
+      fail(res) {
+        wx.showModal({
+          title: '警告',
+          content: '获取通知数据失败',
+          showCancel:false
+        })
+      }
+    })
+  },
+  //跳转到对应功能
   onJumpTap: function (e) {
     var name = e.currentTarget.dataset.name;
     console.log(name);
+  },
+  //广告栏跳转到对应文档
+  toDoc:function(e){
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.downloadFile({
+      fileID: 'cloud://xiaochengxu-o6nj9.7869-xiaochengxu-o6nj9-1259225399/' + e.currentTarget.dataset.fileid,
+      success: res => {
+        // 返回临时文件路径
+        console.log(res.tempFilePath),
+          wx.openDocument({
+            filePath: res.tempFilePath,
+            success: function (res) {
+              wx.hideLoading()
+            }
+          })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getImages()
+    this.getNotice()
   },
 
   /**
@@ -60,7 +95,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getImages()
+    this.getNotice()
   },
 
   /**
