@@ -2,49 +2,49 @@
 <view>
   <!-- 用户 openid -->
   <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-      <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
+    <image src="{{avatarUrl}}" class="userinfo-avatar"></image>
+    <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
   </view>
-  <!-- 设置 -->
-  <view class="setting">
-    <view bindtap="toName" class="setting-container">
-      <image src="icon/name.png" class="setting-icon"></image>
-      <text style="margin-left:30rpx;">{{name}}</text>
+  <!-- 学生信息设置页面 -->
+  <view wx:if="{{!isManager}}">
+      <view class="setting">
+      <view bindtap="toName" class="setting-container">
+        <image src="icon/name.png" class="setting-icon"></image>
+        <text style="margin-left:30rpx;">{{name}}</text>
+      </view>
     </view>
-  </view>
     <view class="setting">
       <view bindtap="toStudentId" class="setting-container">
       <image src="icon/studentId.png" class="setting-icon"></image>
       <text style="margin-left:30rpx;">{{studentId}}</text>
+      </view>
     </view>
-  </view>
     <view class="setting">
       <view bindtap="toSchool" class="setting-container">
       <image src="icon/school.png" class="setting-icon"></image>
       <text style="margin-left:30rpx;">{{school}}</text>
+      </view>
     </view>
-  </view>
     <view class="setting">
       <view bindtap="toMajor" class="setting-container">
-      <image src="icon/major.png" class="setting-icon"></image>
-      <text style="margin-left:30rpx;">{{major}}</text>
+        <image src="icon/major.png" class="setting-icon"></image>
+        <text style="margin-left:30rpx;">{{major}}</text>
+      </view>
     </view>
-  </view>
     <view class="setting">
       <view bindtap="toGrade" class="setting-container">
-      <image src="icon/grade.png" class="setting-icon"></image>
-      <text style="margin-left:30rpx;">{{grade}}</text>
+        <image src="icon/grade.png" class="setting-icon"></image>
+        <text style="margin-left:30rpx;">{{grade}}</text>
+      </view>
     </view>
-    </view>
-      <view class="setting">
+    <view class="setting">
       <view bindtap="toClass" class="setting-container">
-      <image src="icon/class.png" class="setting-icon"></image>
-      <text style="margin-left:30rpx;">{{uclass}}</text>
+        <image src="icon/class.png" class="setting-icon"></image>
+        <text style="margin-left:30rpx;">{{uclass}}</text>
+      </view>
     </view>
-    </view>
+  </view>
+  <!-- 教师信息页面 -->
+  <view wx:if="{{isManager}}">
+  </view>
 </view>

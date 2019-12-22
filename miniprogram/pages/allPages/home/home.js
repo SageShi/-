@@ -1,4 +1,5 @@
 // pages/home1/document/document.js
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -11,6 +12,7 @@ Page({
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
     duration: 1000, //  滑动动画时长1s
+    isManager:false,
   },
   //打电话
   callManager:function(){
@@ -52,6 +54,14 @@ Page({
       }
     })
   },
+  //回到顶部
+  onTop: function () {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
+  },
   //跳转到对应功能
   onJumpTap: function (e) {
     var name = e.currentTarget.dataset.name;
@@ -82,6 +92,9 @@ Page({
   onLoad: function (options) {
     this.getImages()
     this.getNotice()
+    this.setData({
+      isManager:app.globalData.isManager
+    })
   },
 
   /**

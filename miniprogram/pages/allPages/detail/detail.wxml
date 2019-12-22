@@ -26,7 +26,8 @@
     <view class="cCardout">
     <text class="cCardin">{{'评论（' + commentList.length + '）'}}</text>
     </view>
-     <block wx:for="{{commentList}}">
+    <view style="margin-bottom:40px;">
+         <block wx:for="{{commentList}}">
         <view class='cardin'>
           <view class="avatarAndTitle">
             <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
@@ -42,12 +43,16 @@
             </view>
         </view>
      </block>
+    </view>
       <!-- 回到顶部浮标 -->
-    <!-- 搜索框 -->
+          <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+    <!-- 评论框 -->
 <view class="search-bar">
     <view class="search-bar__form">
             <input type="text" class="search-bar__input" placeholder="输入您的评论" bindinput='updataComment'/>
     </view>
-    <!-- 搜索按钮,调用搜索查询方法 -->
     <view class="search-bar__cancel-btn" bindtap='addComment'>评论</view>
 </view>
+
+    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>

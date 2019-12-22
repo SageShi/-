@@ -45,6 +45,7 @@ Page({
                 success: res => {
                   app.globalData.openid = res.result.openid
                   app.globalData.avatarUrl = this.data.userInfo.avatarUrl
+                  app.globalData.userInfo = this.data.userInfo
                 },
                 fail: err => {
                   wx.showModal({
@@ -142,54 +143,73 @@ Page({
     console.log(this.data.choose)
   },
 
-  
-
   //按钮点击事件，查表
-  checkIn: function (e) {
+  checkInStudent: function (e) {
+        app.globalData.isManager = false;//将是否为管理员的全局变量设为假
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+  },
+  checkInManager:function (e) {
     const db = wx.cloud.database({});
     const table = db.collection('manager');
-
     //点击教师端，缓存管理员列表
-    if(this.data.choose=='教师端')
-    {   
-     table.get({
-        success: res => {
-          this.data.managerList=res.data
-        },
-      }) ;
-
-      //检查是否在管理员列表中
-      var temp = this.data.managerList;
-      var have=false;
-      var forend=false;
-      for (var i = 0; i < temp.length; ++i) {
-        if (temp[i].wxid == app.globalData.openid) {//在管理员列表中
-          have=true;
-          app.globalData.isManager = true;  //将是否为管理员的全局变量设为真
-          wx.switchTab({
-            url: '/pages/index/index'}) ;   
-            forend=true;
-            break;     
+      table.where({
+        Wxid: app.globalData.openid
+      }).get(
+        {
+          success: function (res) {
+            if (res.data.length > 0) {
+              app.globalData.isManager = true;  //将是否为管理员的全局变量设为真
+              wx.switchTab({
+                url: '/pages/index/index'
+              });
+            } else {
+              const cdb = wx.cloud.database({});
+              const apply = cdb.collection('apply');
+              apply.where({
+                Wxid: app.globalData.openid
+              }).get(
+                {
+                  success: function (res) {
+                    if (res.data.length > 0) {
+                      wx.showToast({
+                        icon: 'none',
+                        title: '等待审核'
+                      })
+                    } else {
+                      wx.showModal({
+                        content: '是否申请成为管理员？',
+                        success: function (res) {
+                          if (res.cancel) {
+                          } else {
+                            wx.navigateTo({
+                              url: '../managerSetting/managerSetting',
+                            })
+                          }
+                        }
+                      })
+                    }
+                  },
+                  fail: function () {
+                    wx.showToast({
+                      icon: 'none',
+                      title: '网络不佳'
+                    })
+                  }
+                }
+              )
+            }
+          },
+          fail: function () {
+            wx.showToast({
+              icon: 'none',
+              title: '网络不佳'
+            })
+          }
         }
-        if(i==temp.length-1)forend=true;
-      }
-      //不在列表中
-      if (forend&&!have) {
-        wx.showToast({
-        icon: 'none',
-        title: '无此权限'})
-        }
-    }   
-    else  //点击学生端
-    {
-      app.globalData.isManager = false;//将是否为管理员的全局变量设为假
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
-     
-    }
+      )
   },
-  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

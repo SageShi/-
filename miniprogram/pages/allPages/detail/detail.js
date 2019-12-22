@@ -1,5 +1,7 @@
 // miniprogram/pages/allPages/detail/detail.js
 const app = getApp()
+let currentPage = 0 // 当前第几页,0代表第一页 
+let pageSize = 5 //每页显示多少数据 
 Page({
   /**
    * 页面的初始数据
@@ -44,7 +46,7 @@ Page({
         id: this.data.id
       }
     })
-    // 加载建议表
+    // 加载评论表
     comment.where(
       {AdviceId: options.id}
     ).get({
@@ -54,6 +56,14 @@ Page({
         })
       }
     })
+  },
+  //回到顶部
+  onTop: function () {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
   },
   // 添加新评论
   addComment:function() {
@@ -141,7 +151,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

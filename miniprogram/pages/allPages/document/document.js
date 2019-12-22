@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchWord:""
   },
   clickDoc:function(e){
     /*var src = e.currentTarget.dataset.vedio // e.currentTarget
@@ -41,6 +42,32 @@ Page({
         this.setData({
           fileIDList: res.data
         })
+      }
+    })
+  },
+  searchInput:function(e)
+  {
+    this.setData({searchWord:e.detail.value})
+  },
+
+//关键字搜索
+  searchNotice: function (e) {
+    const db = wx.cloud.database({});
+  // 数据库正则对象（正则表达式查询）
+    db.collection('fileID').where({
+    fileid: db.RegExp({
+      regexp: this.data.searchWord,
+      options: 'i',
+      })
+      }).get({
+        success: res => {
+          this.setData({
+            fileIDList: res.data
+          })
+      },
+      fail:function(res)
+      {
+        console.log("not found")
       }
     })
   },

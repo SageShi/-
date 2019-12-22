@@ -1,0 +1,290 @@
+/* miniprogram/pages/allPages/ManagerPages/docManager.wxss */
+page{
+  background: #f5f5f5;
+  height: 100%;
+}
+/*总体主盒子*/
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #939393;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+ 
+/*左侧栏主盒子*/
+.nav_left{
+  /*设置行内块级元素（没使用定位）*/
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  /*主盒子设置背景色为灰色*/
+  background: #f5f5f5;
+  text-align: center;
+}
+/*左侧栏list的item*/
+.nav_left .nav_left_items{
+  /*每个高30px*/
+  height: 30px;
+  /*垂直居中*/
+  line-height: 30px;
+  /*再设上下padding增加高度，总高42px*/
+  padding: 6px 0;
+  /*只设下边线*/
+  border-bottom: 1px solid #dedede;
+  /*文字14px*/
+  font-size: 14px;
+}
+/*左侧栏list的item被选中时*/
+.nav_left .nav_left_items.active{
+  /*背景色变成白色*/
+  background: #fff;
+}
+ 
+/*右侧栏主盒子*/
+.nav_right{
+  /*右侧盒子使用了绝对定位*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  /*宽度75%，高度占满，并使用百分比布局*/
+  width: 75%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #fff;
+}
+/*按钮*/
+.Scancode {
+  background: #fff;
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+/*
+搜索框视频css
+*/
+.search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  border: 1rpx solid rgb(180, 180, 189);
+  height: 30px;
+}
+.search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+/*
+视频列表
+*/
+.vedioItemOutter {
+  height: 50px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.vedioItemInner{
+  height:35px;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+  border-bottom-color: rgb(180, 180, 189);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 2;
+}
+
+.vedioIcon{
+   width:30px;
+   height:30px;
+   margin-right: 20rpx;
+}
+
+.vedioName{
+  font-size: 17px;
+  color: rgba(78, 78, 80, 0.788);
+}
+
+.enterIcon{
+   width:15px;
+   height:15px;
+   margin-right: 30rpx;
+}
+
+/*
+文档列表css
+*/
+.docItem{
+  height:50px;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+  border-bottom-color: rgb(180, 180, 189);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.docName{
+  margin-left: 20rpx;
+  font-size: 15px;
+  color: rgba(78, 78, 80, 0.788);
+  flex-grow: 3;
+}
+
+.enterIcon{
+   width:15px;
+   height:15px;
+   margin-right: 20rpx;
+}
+/*
+弹窗
+*/
+.show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+.modal-input1 {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+.input1 {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+.input-holder1 {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #1296db;
+  text-align: center;
+}

@@ -1,0 +1,42 @@
+<!--miniprogram/pages/allPages/ManagerPages/docManager.wxml-->
+<!--主盒子-->
+<view class="container">
+  <!--左侧栏-->
+  <view class="nav_left">
+    <view class='nav_left_items  {{currentData == 0 ? "active" : ""}}' data-current="0"  bindtap="checkCurrent">
+    视频管理
+    </view>
+    <view class='nav_left_items  {{currentData == 1 ? "active" : ""}}' data-current="1"  bindtap="checkCurrent">
+    文档管理
+    </view>
+    <view class='nav_left_items  {{currentData == 2 ? "active" : ""}}' data-current="2"  bindtap="checkCurrent">
+    首页管理
+    </view>
+  </view>
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--视频列表-->
+    <view wx:if="{{currentData == 0}}">
+      <block wx:for="{{dataList}}">
+        <view>{{item.name}}</view>
+      </block>
+    </view>
+    <!--文档列表-->
+    <view wx:if="{{currentData == 1}}">
+      <block wx:for="{{dataList}}">
+        <view>{{item.fileid}}</view>
+      </block>
+    </view>
+    <!--首页列表-->
+    <view wx:if="{{currentData == 2}}">
+      <block wx:for="{{dataList}}">
+        <image src="{{item.picture}}"></image>
+      </block>
+    </view>
+  </view>
+  <!-- 按钮 -->
+<view class='Scancode'>
+    <image bindtap='upload' src="icon/add.png" class="icon"></image>
+</view>
+</view>
+

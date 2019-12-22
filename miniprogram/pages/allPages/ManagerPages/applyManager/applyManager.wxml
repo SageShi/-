@@ -1,0 +1,52 @@
+<!--miniprogram/pages/allPages/ManagerPages/applyManager/applyManager.wxml-->
+<!-- 顶部tab -->
+<view class="topTabSwiper">
+<view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}' data-current="0"  bindtap="checkCurrent">
+未审核
+</view>
+<view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}' data-current="1"  bindtap="checkCurrent">
+已审核
+</view>
+</view>
+<!-- 具体界面 -->
+<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+<!-- 未审核 -->
+  <swiper-item class='swiper'>
+    <view class="applyForm">
+    <view wx:for="{{applyList}}" >
+      <mp-slideview buttons="{{applyButtons}}" bindbuttontap="aSlideButtonTap" data-id="{{item._id}}">
+        <view class="wrap">
+          <view class="avatarAndTitle">
+            <image class="avatar" src="{{item.AvatarUrl}}"></image>
+            <view class="textWarp">
+              <text style="font-size:13px">{{item.Name}}</text>
+              <text style="font-size:13px;margin-bottom:3px;border-bottom:1px solid gray;">{{item.School}}</text>
+              <view style="margin-top:10rpx;">
+              <text style="font-size:14px;word-break:break-all;width:100%;">{{item.Content}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </mp-slideview>
+    </view>
+    </view>
+  </swiper-item>
+<!-- 已审核 -->
+<swiper-item class='swiper'>
+    <view class="applyForm">
+      <view wx:for="{{managerList}}" >
+        <mp-slideview buttons="{{managerButtons}}" bindbuttontap="mSlideButtonTap" data-id="{{item._id}}">
+          <view class="wrap">
+            <view class="avatarAndTitle">
+              <image class="avatar" src="{{item.AvatarUrl}}" style="margin-bottom:5px;"></image>
+              <view class="textWarp">
+                <text style="font-size:13px">{{item.Name}}</text>
+                <text style="font-size:13px;">{{item.School}}</text>
+              </view>
+            </view>
+          </view>
+        </mp-slideview>
+      </view>
+    </view>
+</swiper-item>
+</swiper>

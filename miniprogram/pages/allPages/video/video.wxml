@@ -3,7 +3,7 @@
     <view class="search-bar__form">
         <view class="search-bar__box">
             <icon class="icon-search_in-box" type="search" size="14"></icon>
-            <input type="text" class="search-bar__input" placeholder="请输入视频或文档关键字"/>
+            <input type="text" class="search-bar__input" bindinput="searchInput" placeholder="请输入视频或文档关键字"/>
         </view>
     </view>
     <!-- 搜索按钮,调用搜索查询方法 -->
@@ -17,7 +17,7 @@
 </view>
 
 <!-- 视频列表   -->
-  <view wx:for="{{vedioList}}" wx:key="*this">
+  <view wx:for="{{videoList}}" wx:key="*this">
     <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'  class='vedioItemOutter'>
       <image src="icon/vedio.png" class="vedioIcon"></image>
       <view class='vedioItemInner'>

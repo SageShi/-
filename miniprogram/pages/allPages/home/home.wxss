@@ -75,3 +75,12 @@ swiper-item image {
   padding-bottom: 20rpx;
   padding-top: 20rpx;
 }
+/* 回到顶部浮标 */
+/*按钮*/
+.icon {
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+  width: 80rpx;
+  height: 80rpx;
+}

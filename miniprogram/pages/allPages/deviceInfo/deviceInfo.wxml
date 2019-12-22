@@ -18,7 +18,7 @@
       </picker>
 </form>
     <view class="cCardout">
-    <text class="cCardin">坏设备列表({{deviceListShow.length}})</text>
+    <text class="cCardin">坏设备列表</text>
     </view>
     <!-- 设备通知列表 -->
     <block wx:for="{{deviceListShow}}">
@@ -37,5 +37,8 @@
           <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>          
         </view>
       </view>
-  </block>
+    </block>
+    <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
   

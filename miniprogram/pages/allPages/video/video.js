@@ -6,20 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchWord: "",
     isManager: app.globalData.isManager,
     currentData: 0,
-    vedioList: [
-      {
-        name:'test',
-        src: 'https://v.qq.com/x/page/k0723gblmlu.html',//非必要
-        vid:'k0723gblmlu' //必要
-      },
-      {
-        name:"test1",
-        src: 'https://v.qq.com/x/page/a07554e8r4i.html',//非必要
-        vid: 'a07554e8r4i'
-      }
-    ]
   },
   
   clickVideo:function(e){
@@ -34,7 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    const db = wx.cloud.database({});
+    const cont = db.collection('videos');
+    // 创建一个变量来保存页面page示例中的this, 方便后续使用
+    var _this = this;   
+    db.collection('videos').get({
+      success: res => {
+        this.setData({
+          videoList: res.data
+        })
+      }
+    })
   },
   //获取当前滑块的index
   bindchange: function (e) {
@@ -56,11 +55,31 @@ Page({
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  searchInput: function (e) {
+    this.setData({ searchWord: e.detail.value })
+  },
+
+  //关键字搜索
+  searchNotice: function (e) {
+    const db = wx.cloud.database({});
+    // 数据库正则对象（正则表达式查询）
+    db.collection('videos').where({
+      name: db.RegExp({
+        regexp: this.data.searchWord,
+        options: 'i',
+      })
+    }).get({
+      success: res => {
+        this.setData({
+          videoList: res.data
+        })
+        console.log(res.data)
+      },
+      fail: function (res) {
+        console.log("not found")
+      }
+    })
   },
 
   /**

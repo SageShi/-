@@ -18,7 +18,16 @@
     "pages/allPages/home/home",
     "pages/allPages/setting/setting",
     "pages/allPages/advice/advice",
-    "pages/allPages/detail/detail"
+    "pages/allPages/detail/detail",
+    "pages/allPages/ManagerPages/docManager/docManager",
+    "pages/allPages/ManagerPages/advManager/advManager",
+    "pages/allPages/ManagerPages/applyManager/applyManager",
+    "pages/allPages/ManagerPages/noticeManager/noticeManager",
+    "pages/allPages/ManagerPages/repairManager/repairManager",
+    "pages/allPages/ManagerPages/vupload/vupload",
+    "pages/allPages/ManagerPages/dupload/dupload",
+    "pages/allPages/ManagerPages/aupload/aupload",
+    "pages/allPages/ManagerPages/comManager/comManager"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,12 @@
+<!--miniprogram/pages/allPages/ManagerPages/dupload/dupload.wxml-->
+      <view style='height=100%'>
+      <form style='height=100%' bindsubmit="repairClick">
+      <view class='out'>
+          <view class='in'>
+              <image src='icon/cpt-g.png'/>
+              <input placeholder='文件名' value="{{repairForm.mechaNum}}" name="mechaNum" type="number"></input>
+          </view>
+      </view>
+      <button class='submitbutton' form-type="submit">提交</button>
+      </form>
+      </view>

@@ -57,3 +57,34 @@ text-align:right;
   border-bottom-width:3rpx;
   flex-grow: 2;
 }
+/* 回到顶部浮标 */
+/*按钮*/
+.icon {
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+/*设置text显示行数，多余的省略*/
+.intro_info{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+
+  margin-top: 10rpx;
+  line-height: 29rpx;
+  font-size: 26rpx;
+  color: darkgray;
+}
+.loading {
+  position: relative;
+  bottom: 5rpx;
+  padding: 10rpx;
+  text-align: center;
+  color: rgba(102, 102, 105, 0.863);
+  font-size:14px;
+}

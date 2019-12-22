@@ -1,0 +1,78 @@
+/* miniprogram/pages/allPages/ManagerPages/applyManager/applyManager.wxss */
+/*
+选项卡css
+*/
+.tab {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 10rpx 0;
+}
+ 
+.topTabSwiper {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  zoom: 1;
+}
+ 
+.topTabSwiper:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+ 
+.tabBorer-A {
+  border-bottom: 2px solid #efb336;
+  border-width: 2px;
+  color:  #efb336;
+}
+
+.tabBorer-B {
+  border-bottom: 1px solid rgb(178, 180, 178);
+  color: rgb(178, 180, 178);
+  border-width: 2px;
+}
+ 
+.swiper {
+  width: 100%;
+}
+ 
+.swiper_con {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 80rpx 0;
+}
+/* 申请人 */
+.applyForm {
+  width: 100%;
+  min-height: 100%;
+}
+
+.wrap {
+font-size: 14px;
+border-bottom: 1px solid #ccc;
+width: 100%;
+}
+
+.avatarAndTitle{
+  padding-bottom:5rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+.avatar{
+  height:40px;
+  width:40px;
+  border-radius:20px;
+  margin-right:30rpx;
+  margin-left: 20rpx;
+  margin-top: 8px;
+}
+.textWarp {
+  padding-bottom:5rpx;
+  display: flex;
+  flex-direction:column;
+  justify-content: start;
+}

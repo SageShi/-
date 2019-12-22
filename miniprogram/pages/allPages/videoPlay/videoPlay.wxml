@@ -1,1 +1,33 @@
+
 <txv-video class='myvedio'vid="{{vid}}" playerid="txv{{id}}"  autoplay="{{false}}"></txv-video>
+    <!----评论列表---->
+    <view class="cCardout">
+    <text class="cCardin">{{'评论（' + commentList.length + '）'}}</text>
+    </view>
+    <view style="margin-bottom:40px;">
+         <block wx:for="{{commentList}}">
+        <view class='cardin'>
+          <view class="avatarAndTitle">
+            <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
+            <view class="title">
+              <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+            </view>
+          </view>
+          <view style="margin-top:10rpx;">
+            <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
+          </view>
+            <view style='text-align:right;margin-top:15rpx;'>
+            <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+            </view>
+        </view>
+     </block>
+    </view>
+      <!-- 回到顶部浮标 -->
+          <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+    <!-- 评论框 -->
+<view class="search-bar">
+    <view class="search-bar__form">
+            <input type="text" class="search-bar__input" placeholder="输入您的评论" bindinput='updataComment'/>
+    </view>
+    <view class="search-bar__cancel-btn" bindtap='addComment'>评论</view>
+</view>

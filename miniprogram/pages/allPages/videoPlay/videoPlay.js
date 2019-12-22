@@ -1,13 +1,22 @@
 // pages/home1/video/video.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    commentList:[],
+    vid:'',
+    id:'',
+    newComment:'',
   },
-
+  //实时获取表单值
+  updataComment: function (e) {
+    this.setData({
+      newComment: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,8 +25,65 @@ Page({
       vid: options.vid || '',
       id: options.id || ''
     });
+    const db = wx.cloud.database({})
+    const comment = db.collection('vComment')
+    // 加载评论表
+    comment.where(
+      { videoId: options.vid }
+    ).get({
+      success: res => {
+        this.setData({
+          commentList: res.data
+        })
+      }
+    })
   },
-
+  onTop: function () {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
+  },
+  addComment: function () {
+    if (app.globalData.studentdocid != '') {
+      const db = wx.cloud.database({})
+      const comment = db.collection('vComment')
+      var myDate = new Date();//获取系统当前时间
+      comment.add({
+        data: {
+          Holder: app.globalData.name,
+          Holderid: app.globalData.studentdocid,
+          HolderAvatarUrl: app.globalData.avatarUrl,
+          Content: this.data.newComment,
+          videoId: this.data.vid,
+          Year: myDate.getFullYear(),
+          Month: myDate.getMonth() + 1,
+          Date: myDate.getDate(),
+          Hours: myDate.getHours(),
+          Minutes: myDate.getMinutes()
+        },
+        success: function (res) {
+          wx.showToast({
+            title: '评论成功',
+            duration: 2000
+          })
+        }
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '请先完善学生信息',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../firstSetting/firstSetting',
+            })
+          }
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "navigation-button": "../../component/navigation/navigation"
+    "navigation-button": "../../component/navigation/navigation",
+    "Mnavigation-button": "../../component/Mnavigation/Mnavigation"
   }
 }

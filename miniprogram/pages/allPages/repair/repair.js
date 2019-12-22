@@ -20,7 +20,92 @@ Page({
       subject: '',
       content: '',
     },
-    check:false
+    noticeForm: {
+      archNum: 'B7',
+      roomNum: '133',
+      notice:'',
+      type:'',
+    },
+    check:false,
+    isManager:false,
+  },
+  /**
+   * 教师端相关
+   */
+  //验证
+  initValidateM() {
+      const rules = {
+        type: {
+          required: true
+        },
+        notice: {
+          required: true,
+          maxlength: 500
+        }
+      }
+      const messages = {
+        mechaNum: {
+          required: '请输入通知类型',
+        },
+        description: {
+          required: '请输入通知内容',
+          maxlength: '不要超过500个字'
+        }
+      }
+      this.WxValidate = new WxValidate(rules, messages)
+  },
+  //重置
+  resetNData() {
+    this.setData({
+      noticeForm: {
+        archNum: 'B7',
+        roomNum: '133',
+        notice: '',
+        type: '',
+      },
+    })
+  },
+  // 提交表单
+  noticeClick:function(e){
+
+  },
+  //数据库
+  /**
+* 数据库函数-报修
+*/
+  onAddNotice: function (params) {
+      var myDate = new Date();//获取系统当前时间
+      const db = wx.cloud.database()
+      db.collection('notice').add({
+        data: {
+          ArchNum: params.narchNum,
+          RoomNum: params.nroomNum,
+          Type: params.type,
+          Notice: params.notice,
+
+          Year: myDate.getFullYear(),
+          Month: myDate.getMonth() + 1,
+          Date: myDate.getDate(),
+          Hours: myDate.getHours(),
+          Minutes: myDate.getMinutes(),
+
+          Holder: app.globalData.name,
+          HolderAvatarUrl: app.globalData.avatarUrl
+        },
+        success: res => {
+          wx.showToast({
+            title: '新增通知成功',
+          })
+          this.resetRData()
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '新增通知失败'
+          })
+          console.error('[数据库] [新增记录] 失败：', err)
+        }
+      })
   },
   /**
    * 选择器
@@ -35,7 +120,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initValidate(0)
+    this.setData({
+      isManager:app.globalData.isManager
+    })
+    if(this.data.isManager){
+      this.initValidateM()
+    } else{
+      this.initValidate(this.data.currentData)
+    }
+  },
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
+    if (this.data.isManager) {
+      this.initValidateM()
+    } else {
+      this.initValidate(this.data.currentData)
+    }
   },
   //表单验证
   initValidate(flag){
@@ -167,12 +269,6 @@ Page({
       this.data.check = true
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.initValidate()
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -181,12 +277,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.initValidate(0)
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -245,7 +335,9 @@ Page({
 
           Holder:app.globalData.name,
           Holderid:app.globalData.studentdocid,
-          HolderAvatarUrl: app.globalData.avatarUrl
+          HolderAvatarUrl: app.globalData.avatarUrl,
+
+          createTime: db.serverDate() //添加该字段用于排序
         },
         success: res => {
           wx.showToast({

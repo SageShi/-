@@ -10,7 +10,7 @@
           </view>
         </view>
         <view style="margin-top:10rpx;">
-          <text style="word-break:break-all;">{{item.Content}}</text>
+          <text class='intro_info'>{{item.Content}}</text>
         </view>
         <view style='text-align:right;margin-top:10rpx;'>
           <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.Subject}}</label>
@@ -22,3 +22,7 @@
       </view>
     </view>
   </block>
+   <!-- 回到顶部浮标 -->
+   <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
