@@ -1,58 +1,59 @@
 <!--miniprogram/pages/allPages/detail/detail.wxml-->
-    <view class='cardout'>
-      <view class='cardin'>
-        <view class="avatarAndTitle">
-          <image src="{{adviceItem.HolderAvatarUrl}}" class='avatar'></image>
-          <view class="title">
-          <label style="font-size:13px ;margin-bottom:3px">{{adviceItem.Holder}}</label>
-          <label style="font-size:10px">{{adviceItem.Year+'-'+adviceItem.Month+'-'+adviceItem.Date+' '+adviceItem.Hours+':'+adviceItem.Minutes}}</label>
-          </view>
-        </view>
-        <view style="margin-top:10rpx;">
-          <text style="word-break:break-all;">{{adviceItem.Content}}</text>
-        </view>
-        <view style='text-align:right;margin-top:10rpx;'>
-          <label style='text-align:right;'>{{adviceItem.ArchNum+'-'+adviceItem.RoomNum+'-'+adviceItem.Subject}}</label>
-        </view>
-        <view class="supportBox">
-        <image src="{{sIcon}}" class="support" catchtap="addSupport"></image>
-        <text>{{support}}</text>
-        <image src="{{oIcon}}" class="support" catchtap="addOppose"></image>
-        <text>{{oppose}}</text>
-        </view>
+<view class='cardout'>
+  <view class='cardin'>
+    <view class="avatarAndTitle">
+      <image src="{{adviceItem.HolderAvatarUrl}}" class='avatar'></image>
+      <view class="title">
+        <label style="font-size:13px ;margin-bottom:3px">{{adviceItem.Holder}}</label>
+        <label style="font-size:10px">{{adviceItem.Year+'-'+adviceItem.Month+'-'+adviceItem.Date+' '+adviceItem.Hours+':'+adviceItem.Minutes}}</label>
       </view>
     </view>
-    <!----评论列表---->
-    <view class="cCardout">
-    <text class="cCardin">{{'评论（' + commentList.length + '）'}}</text>
+    <view style="margin-top:10rpx;">
+      <text style="word-break:break-all;">{{adviceItem.Content}}</text>
     </view>
-    <view style="margin-bottom:40px;">
-         <block wx:for="{{commentList}}">
-        <view class='cardin'>
-          <view class="avatarAndTitle">
-            <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
-            <view class="title">
-              <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
-            </view>
-          </view>
-          <view style="margin-top:10rpx;">
-            <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
-          </view>
-            <view style='text-align:right;margin-top:15rpx;'>
-            <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
-            </view>
-        </view>
-     </block>
+    <view style='text-align:right;margin-top:10rpx;'>
+      <label style='text-align:right;'>{{adviceItem.ArchNum+'-'+adviceItem.RoomNum+'-'+adviceItem.Subject}}</label>
     </view>
-      <!-- 回到顶部浮标 -->
-          <image bindtap='onTop' src="icon/top.png" class="icon"></image>
-    <!-- 评论框 -->
-<view class="search-bar">
-    <view class="search-bar__form">
-            <input type="text" class="search-bar__input" placeholder="输入您的评论" bindinput='updataComment'/>
+    <view class="supportBox">
+      <image src="{{sIcon}}" class="support" catchtap="addSupport"></image>
+      <text>{{support}}</text>
+      <image src="{{oIcon}}" class="support" catchtap="addOppose"></image>
+      <text>{{oppose}}</text>
     </view>
-    <view class="search-bar__cancel-btn" bindtap='addComment'>评论</view>
+  </view>
+</view>
+<!----评论列表---->
+<view class="cCardout">
+  <text class="cCardin">{{'评论（' + commentList.length + '）'}}</text>
 </view>
 
-    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
-    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
+<view style="margin-bottom:40px;">
+  <block wx:for="{{commentList}}">
+    <view class='cardin'>
+      <view class="avatarAndTitle">
+        <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
+        <view class="title">
+          <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+        </view>
+      </view>
+      <view style="margin-top:10rpx;">
+        <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
+      </view>
+      <view style='text-align:right;margin-top:15rpx;'>
+        <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 回到顶部浮标 -->
+<image bindtap='onTop' src="icon/top.png" class="icon"></image>
+<!-- 评论框 -->
+<view class="search-bar">
+  <view class="search-bar__form">
+    <input type="text" class="search-bar__input" placeholder="输入您的评论" bindinput='updataComment' />
+  </view>
+  <view class="search-bar__cancel-btn" bindtap='addComment'>评论</view>
+</view>
+
+<view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+<view class="loading" hidden="{{!loadAll}}">已加载全部</view>
