@@ -11,7 +11,7 @@
   <view class="connect">
   <text style="margin-left:30rpx;line-height:100rpx;font-size:13px;">有问题欢迎咨询管理员</text>
   <image src="icon/phone.png" class="connecticon" bindtap="callManager"></image>
-  <image src="icon/wechat.png" class="connecticon"></image>
+  <image src="icon/wechat.png" class="connecticon" bindtap="wechatClick"></image>
   </view>
   </view>
       <view class="cCardout">

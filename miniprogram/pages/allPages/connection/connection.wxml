@@ -1,0 +1,5 @@
+<!--pages/allPages/connection/connection.wxml-->
+<view class="body-view">
+    <text>{{text}}</text>
+</view>
+

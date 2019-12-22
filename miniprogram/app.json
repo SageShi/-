@@ -27,7 +27,8 @@
     "pages/allPages/ManagerPages/vupload/vupload",
     "pages/allPages/ManagerPages/dupload/dupload",
     "pages/allPages/ManagerPages/aupload/aupload",
-    "pages/allPages/ManagerPages/comManager/comManager"
+    "pages/allPages/ManagerPages/comManager/comManager",
+    "pages/allPages/connection/connection"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

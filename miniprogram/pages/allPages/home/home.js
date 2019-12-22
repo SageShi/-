@@ -25,6 +25,13 @@ Page({
       phoneNumber: '15875206987'
     })
   },
+  wechatClick:function()
+  {
+    wx.navigateTo({
+      url: "/pages/allPages/connection/connection",
+    })
+  },
+
   //获取广告图
   getImages() {
     let that = this;
