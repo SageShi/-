@@ -66,6 +66,7 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  z-index: 9999;
 }
 .icon {
   width: 80rpx;
@@ -180,6 +181,12 @@ page{
    width:15px;
    height:15px;
    margin-right: 20rpx;
+}
+/*
+图片列表css
+*/
+.picItem{
+  display: flex;
 }
 /*
 弹窗

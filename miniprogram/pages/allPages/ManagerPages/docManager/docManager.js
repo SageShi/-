@@ -7,11 +7,10 @@ Page({
   data: {
     currentData: 0,
     dataList: [],
-    listButtons: [
-      {
-        type: 'warn',
-        text: '删除',
-      }],
+    listButtons: [{
+      type: 'warn',
+      text: '删除',
+    }],
     searchWord: "",
     //是否弹出弹窗
     showModal: false,
@@ -22,7 +21,7 @@ Page({
   /**
    * 转换tab
    */
-  checkCurrent: function (e) {
+  checkCurrent: function(e) {
     const that = this;
     if (that.data.currentData === e.target.dataset.current) {
       return false;
@@ -36,16 +35,16 @@ Page({
   /**
    * 获取对应资料
    */
-  getData:function(flag) {
-      if (flag == 0){
-        this.getVedio()
-      } else if (flag == 1) {
-        this.getDoc()
-      } else {
-        this.getAd()
-      }
+  getData: function(flag) {
+    if (flag == 0) {
+      this.getVedio()
+    } else if (flag == 1) {
+      this.getDoc()
+    } else {
+      this.getAd()
+    }
   },
-  getVedio(){
+  getVedio() {
     const db = wx.cloud.database({})
     const vedio = db.collection('videos')
     vedio.get({
@@ -56,7 +55,7 @@ Page({
       }
     })
   },
-  getDoc(){
+  getDoc() {
     const db = wx.cloud.database({})
     const doc = db.collection('fileID')
     doc.get({
@@ -67,7 +66,7 @@ Page({
       }
     })
   },
-  getAd(){
+  getAd() {
     const db = wx.cloud.database({})
     const ad = db.collection('advertises')
     ad.get({
@@ -81,24 +80,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-   this.getVedio()
+  onLoad: function(options) {
+    this.getVedio()
   },
-    //滑动删除视频
+  //滑动删除视频
   vSlideButtonTap(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     wx.showModal({
       title: '注意',
       content: '你确定要删除该视频？',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           that.deleteVideo(id)
         }
       }
     })
   },
-  deleteVideo: function (ID) {
+  deleteVideo: function(ID) {
     wx.cloud.callFunction({
       name: 'remove',
       data: {
@@ -119,14 +118,14 @@ Page({
     wx.showModal({
       title: '注意',
       content: '你确定要删除该文件？',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           that.deleteDoc(id)
         }
       }
     })
   },
-  deleteDoc: function (ID) {
+  deleteDoc: function(ID) {
     wx.cloud.callFunction({
       name: 'remove',
       data: {
@@ -140,15 +139,53 @@ Page({
       },
     })
   },
+  //滑动删除图片
+  pSlideButtonTap(e) {
+    var id = e.currentTarget.dataset.id
+    var that = this
+    wx.showModal({
+      title: '注意',
+      content: '你确定要删除该图片？',
+      success: function (res) {
+        if (res.confirm) {
+          that.deletePic(id)
+        }
+      }
+    })
+  },
+  deletePic: function (ID) {
+    //云存储删除
+    wx.cloud.deleteFile({
+      fileList: ID, //云文件 ID
+      success: res => {
+        // handle success
+        console.log(res.fileList)
+      }
+    })
+
+    //数据库删除
+    wx.cloud.callFunction({
+      name: 'remove',
+      data: {
+        id: ID,
+        collection: 'advertises'
+      },
+      complete: res => {
+        wx.showToast({
+          title: '删除成功',
+        })
+      },
+    })
+  },
   //点击进入视频或文档页面
-  clickVideo: function (e) {
+  clickVideo: function(e) {
     var vid = e.currentTarget.dataset.vid;
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/allPages/videoPlay/videoPlay?vid=' + vid + '&id' + id
     })
   },
-  clickDoc: function (e) {
+  clickDoc: function(e) {
     wx.showLoading({
       title: '加载中',
     })
@@ -159,7 +196,7 @@ Page({
         console.log(res.tempFilePath),
           wx.openDocument({
             filePath: res.tempFilePath,
-            success: function (res) {
+            success: function(res) {
               wx.hideLoading()
             }
           })
@@ -167,7 +204,7 @@ Page({
     })
   },
   //总的上传
-  upload: function () {
+  upload: function() {
     var flag = this.data.currentData
     if (flag == 0) {
       this.videoUpload()
@@ -175,23 +212,24 @@ Page({
       this.fileUpload()
     } else {
       //这里写首页上传
+      this.uploadPicture()
     }
   },
   //视频上传页面
-  videoUpload: function (e) {
+  videoUpload: function(e) {
     this.setData({
       showModal: true
     })
-  }, 
-  hideModal: function () {
+  },
+  hideModal: function() {
     this.setData({
       showModal: false
     });
   },
-  onCancel: function () {
+  onCancel: function() {
     this.hideModal();
   },
-  onConfirm: function () {
+  onConfirm: function() {
     const db = wx.cloud.database()
     db.collection('videos').add({
       data: {
@@ -216,14 +254,14 @@ Page({
 
     this.refresh()
   },
-  inputVid: function (e) {
+  inputVid: function(e) {
     this.data.videoVid = e.detail.value
   },
-  inputName: function (e) {
+  inputName: function(e) {
     this.data.videoName = e.detail.value
   },
-//文件上传页面
-  fileUpload: function (e) {
+  //文件上传页面
+  fileUpload: function(e) {
     var that = this;
     wx.chooseMessageFile({
       count: 1,
@@ -231,7 +269,9 @@ Page({
       success(res) {
         var filename = res.tempFiles[0].name
         console.info(filename);
-        that.setData({ uploadFileName: filename });
+        that.setData({
+          uploadFileName: filename
+        });
 
         wx.cloud.uploadFile({
           cloudPath: filename,
@@ -261,13 +301,81 @@ Page({
         })
       }
     })
-  }, 
+  },
+
+  //获取对象长度
+  objLength: function (obj){
+    var count = 0;
+    for(var i in obj){
+      count++;
+     }
+   return count;
+  },
+
+  //广告图片上传
+  uploadPicture: function(e) {
+    var that = this
+    var listLenth = that.objLength(that.data.dataList)
+    if (listLenth >=5)
+    {
+      wx.showToast({
+        icon: 'none',
+        title: '最多只能上传5张'
+      })
+      return
+    }
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //以当前时间命名图片，因为存储时重名会自动替换
+        var timestamp = Date.parse(new Date());
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.cloud.uploadFile({
+          cloudPath: timestamp+'.jpg',
+          filePath: tempFilePaths[0],
+          success(res) {
+            //上传成功后会返回永久地址
+            console.log(res.fileID)
+
+            const db = wx.cloud.database()
+            db.collection('advertises').add({
+              data: {
+                Picture: res.fileID
+              },
+              success: res => {
+                //that.refresh()
+              }
+            })
+            wx.showToast({
+              title: '上传成功',
+            })
+
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败'
+            })
+            console.log(res.fileID)
+          }
+        })
+      }
+    })
+  },
+
   //搜索
-  searchInput: function (e) {
-    this.setData({ searchWord: e.detail.value })
+  searchInput: function(e) {
+    this.setData({
+      searchWord: e.detail.value
+    })
   },
   //关键字搜索
-  searchNotice: function (e) {
+  searchNotice: function(e) {
     var flag = this.data.currentData
     if (flag == 0) {
       this.searchV()
@@ -277,7 +385,7 @@ Page({
       //这个可以是搜索广告栏那里
     }
   },
-  searchV:function(e) {
+  searchV: function(e) {
     const db = wx.cloud.database({});
     // 数据库正则对象（正则表达式查询）
     db.collection('videos').where({
@@ -292,12 +400,12 @@ Page({
         })
         console.log(res.data)
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("not found")
       }
     })
   },
-  searchD: function (e) {
+  searchD: function(e) {
     const db = wx.cloud.database({});
     // 数据库正则对象（正则表达式查询）
     db.collection('fileID').where({
@@ -311,57 +419,57 @@ Page({
           fileIDList: res.data
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("not found")
       }
     })
   },
   /**
- * 生命周期函数--监听页面初次渲染完成
- */
-  onReady: function () {
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 })
