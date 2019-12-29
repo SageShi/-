@@ -54,12 +54,17 @@
       </block>
     </view>
     <!--首页列表-->
+    <!--首页图片列表-->
     <view wx:if="{{currentData == 2}}">
       <block wx:for="{{dataList}}">
-        <image src="{{item.picture}}"></image>
+        <mp-slideview buttons="{{listButtons}}" bindbuttontap="pSlideButtonTap" data-id="{{item._id}}">
+          <view class='picItem'>
+            <image src="{{item.Picture}}" mode='aspectFit'></image>
+          </view>
+        </mp-slideview>
       </block>
     </view>
-  </view>
+    </view>
   <!-- 按钮 -->
 <view class='Scancode'>
     <image bindtap='upload' src="icon/add.png" class="icon"></image>

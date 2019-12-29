@@ -7,6 +7,7 @@
 
 .cardin {
   background-color: #fff;
+  height:100%;
   color: rgba(102, 102, 105, 0.863);
   padding: 20rpx 20rpx 20rpx 20rpx;
   font-size:14px;
@@ -130,4 +131,12 @@ text-align:right;
   right: 15rpx;
   width: 80rpx;
   height: 80rpx;
+}
+.loading {
+  position: relative;
+  bottom: 75rpx;
+  padding: 10rpx;
+  text-align: center;
+  color: rgba(102, 102, 105, 0.863);
+  font-size:14px;
 }

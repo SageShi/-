@@ -53,3 +53,5 @@
     </view>
     <view class="search-bar__cancel-btn" bindtap='addComment'>评论</view>
 </view>
+<view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+<view class="loading" hidden="{{!loadAll}}">已加载全部</view>

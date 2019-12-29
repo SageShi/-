@@ -140,6 +140,44 @@ Page({
       },
     })
   },
+  //滑动删除图片
+  pSlideButtonTap(e) {
+    var id = e.currentTarget.dataset.id
+    var that = this
+    wx.showModal({
+      title: '注意',
+      content: '你确定要删除该图片？',
+      success: function (res) {
+        if (res.confirm) {
+          that.deletePic(id)
+        }
+      }
+    })
+  },
+  deletePic: function (ID) {
+    //云存储删除
+    wx.cloud.deleteFile({
+      fileList: ID, //云文件 ID
+      success: res => {
+        // handle success
+        console.log(res.fileList)
+      }
+    })
+
+    //数据库删除
+    wx.cloud.callFunction({
+      name: 'remove',
+      data: {
+        id: ID,
+        collection: 'advertises'
+      },
+      complete: res => {
+        wx.showToast({
+          title: '删除成功',
+        })
+      },
+    })
+  },
   //点击进入视频或文档页面
   clickVideo: function (e) {
     var vid = e.currentTarget.dataset.vid;
@@ -175,6 +213,7 @@ Page({
       this.fileUpload()
     } else {
       //这里写首页上传
+      this.uploadPicture()
     }
   },
   //视频上传页面
@@ -262,6 +301,70 @@ Page({
       }
     })
   }, 
+  //获取对象长度
+  objLength: function (obj) {
+    var count = 0;
+    for (var i in obj) {
+      count++;
+    }
+    return count;
+  },
+
+  //广告图片上传
+  uploadPicture: function (e) {
+    var that = this
+    var listLenth = that.objLength(that.data.dataList)
+    if (listLenth >= 5) {
+      wx.showToast({
+        icon: 'none',
+        title: '最多只能上传5张'
+      })
+      return
+    }
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //以当前时间命名图片，因为存储时重名会自动替换
+        var timestamp = Date.parse(new Date());
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.cloud.uploadFile({
+          cloudPath: timestamp + '.jpg',
+          filePath: tempFilePaths[0],
+          success(res) {
+            //上传成功后会返回永久地址
+            console.log(res.fileID)
+
+            const db = wx.cloud.database()
+            db.collection('advertises').add({
+              data: {
+                Picture: res.fileID
+              },
+              success: res => {
+                //that.refresh()
+              }
+            })
+            wx.showToast({
+              title: '上传成功',
+            })
+
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败'
+            })
+            console.log(res.fileID)
+          }
+        })
+      }
+    })
+  },
+
   //搜索
   searchInput: function (e) {
     this.setData({ searchWord: e.detail.value })
