@@ -14,7 +14,7 @@
   <swiper-item class='swiper'>
     <view class="applyForm">
     <view wx:for="{{applyList}}" >
-      <mp-slideview buttons="{{applyButtons}}" bindbuttontap="aSlideButtonTap" data-id="{{item._id}}">
+      <mp-slideview buttons="{{applyButtons}}" bindbuttontap="aSlideButtonTap" data-id="{{item._id}}" data-name="{{item.Name}}" data-school="{{item.School}}" data-wxid="{{item.Wxid}}" data-avatarurl="{{item.AvatarUrl}}">
         <view class="wrap">
           <view class="avatarAndTitle">
             <image class="avatar" src="{{item.AvatarUrl}}"></image>

@@ -6,13 +6,6 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-<<<<<<< HEAD
-		"newFeature": true
-	},
-	"appid": "wxce7ebe31e6f192eb",
-	"projectname": "miniprogram-test-2",
-	"libVersion": "2.2.5",
-=======
 		"newFeature": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
@@ -28,7 +21,6 @@
 	"appid": "wxce7ebe31e6f192eb",
 	"projectname": "miniprogram-test-2",
 	"libVersion": "2.9.1",
->>>>>>> first commitexit
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

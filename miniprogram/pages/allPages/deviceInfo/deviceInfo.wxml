@@ -1,45 +1,44 @@
 <!--pages/home1/deviceInfo/deviceInfo.wxml-->
 <!-- 搜索框 -->
 <form bindsubmit="fastSearch">
-  <!-- 搜索按钮,调用搜索查询方法 -->
-  <button bindtap='showAll' size="mini">显示全部</button>
-  <button form-type="submit" size="mini" style="background-color:#efb336;color:white;float:right;margin:10rpx;">快速搜索</button>
-  <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
-    <view class='out'>
-      <image src='icon/building.png' />
-      <input class='in' value="{{archNum}}" name="archNum" placeholder="输入楼号快速搜索">
-      </input>
-    </view>
-    <view class='out'>
-      <image src='icon/room.png' />
-      <input class='in' value="{{roomNum}}" name="roomNum" placeholder="输入房号快速搜索">
-      </input>
-    </view>
-  </picker>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <button  bindtap='showAll' size="mini">显示全部</button>
+        <button  form-type="submit" size="mini" style="background-color:#efb336;color:white;float:right;margin:10rpx;">快速搜索</button>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
+        <view class='out'>
+            <image src='icon/building.png'/>
+            <input class='in' value="{{archNum}}" name="archNum" placeholder="输入楼号快速搜索">
+            </input>
+        </view>
+        <view class='out'>
+            <image src='icon/room.png'/>
+            <input class='in' value="{{roomNum}}" name="roomNum" placeholder="输入房号快速搜索">
+            </input>
+        </view>
+      </picker>
 </form>
-
-<view class="cCardout">
-  <text class="cCardin">坏设备列表</text>
-</view>
-
-<!-- 设备通知列表 -->
-<block wx:for="{{deviceListShow}}">
-  <view class='cardin'>
-    <view class="avatarAndTitle">
-      <image src="{{item.HolderAvatarUrl}}" class='avatar'></image>
-      <view class="title">
-        <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
-        <label style="font-size:10px">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+    <view class="cCardout">
+    <text class="cCardin">坏设备列表</text>
+    </view>
+    <!-- 设备通知列表 -->
+    <block wx:for="{{deviceListShow}}">
+      <view class='cardin'>
+        <view class="avatarAndTitle">
+          <image src="{{item.HolderAvatarUrl}}" class='avatar'></image>
+          <view class="title">
+          <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+          <label style="font-size:10px">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+          </view>
+        </view>
+        <view style="margin-top:10rpx;">
+          <text style="word-break:break-all;">{{item.Description}}</text>
+        </view>
+        <view style='text-align:right;margin-top:10rpx;'>
+          <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>          
+        </view>
       </view>
-    </view>
-    <view style="margin-top:10rpx;">
-      <text style="word-break:break-all;">{{item.Description}}</text>
-    </view>
-    <view style='text-align:right;margin-top:10rpx;'>
-      <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.MechaNum}}</label>
-    </view>
-  </view>
-</block>
-<image bindtap='onTop' src="icon/top.png" class="icon"></image>
-<view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
-<view class="loading" hidden="{{!loadAll}}">已加载全部</view>
+    </block>
+    <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
+  

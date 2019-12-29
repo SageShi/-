@@ -1,27 +1,27 @@
 <!--miniprogram/pages/allPages/ManagerPages/docManager.wxml-->
 <!-- 搜索框 -->
 <view class="search-bar">
-  <view class="search-bar__form">
-    <view class="search-bar__box">
-      <icon class="icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="search-bar__input" bindinput="searchInput" placeholder="请输入关键字" />
+    <view class="search-bar__form">
+        <view class="search-bar__box">
+            <icon class="icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="search-bar__input" bindinput="searchInput" placeholder="请输入关键字"/>
+        </view>
     </view>
-  </view>
-  <!-- 搜索按钮,调用搜索查询方法 -->
-  <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <view class="search-bar__cancel-btn" bindtap='searchNotice'>搜索</view>
 </view>
 <!--主盒子-->
 <view class="container">
   <!--左侧栏-->
   <view class="nav_left">
-    <view class='nav_left_items  {{currentData == 0 ? "active" : ""}}' data-current="0" bindtap="checkCurrent">
-      视频管理
+    <view class='nav_left_items  {{currentData == 0 ? "active" : ""}}' data-current="0"  bindtap="checkCurrent">
+    视频管理
     </view>
-    <view class='nav_left_items  {{currentData == 1 ? "active" : ""}}' data-current="1" bindtap="checkCurrent">
-      文档管理
+    <view class='nav_left_items  {{currentData == 1 ? "active" : ""}}' data-current="1"  bindtap="checkCurrent">
+    文档管理
     </view>
-    <view class='nav_left_items  {{currentData == 2 ? "active" : ""}}' data-current="2" bindtap="checkCurrent">
-      首页管理
+    <view class='nav_left_items  {{currentData == 2 ? "active" : ""}}' data-current="2"  bindtap="checkCurrent">
+    首页管理
     </view>
   </view>
   <!--右侧栏-->
@@ -30,60 +30,55 @@
     <view wx:if="{{currentData == 0}}">
       <block wx:for="{{dataList}}">
         <mp-slideview buttons="{{listButtons}}" bindbuttontap="vSlideButtonTap" data-id="{{item._id}}">
-          <view bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}' class='vedioItemOutter'>
-            <image src="icon/vedio.png" class="vedioIcon"></image>
-            <view class='vedioItemInner'>
-              <text class='vedioName'>{{item.name}}</text>
-              <image src="icon/enter.png" class="enterIcon"></image>
-            </view>
-          </view>
+      <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'  class='vedioItemOutter'>
+        <image src="icon/vedio.png" class="vedioIcon"></image>
+        <view class='vedioItemInner'>
+          <text class='vedioName'>{{item.name}}</text>
+          <image src="icon/enter.png" class="enterIcon"></image>    
+        </view>
+      </view>
         </mp-slideview>
       </block>
     </view>
     <!--文档列表-->
     <view wx:if="{{currentData == 1}}">
       <block wx:for="{{dataList}}">
-        <mp-slideview buttons="{{listButtons}}" bindbuttontap="dSlideButtonTap" data-id="{{item._id}}">
-          <view bindtap='clickDoc' data-fileid='{{item.fileid}}'>
-            <view class='docItem'>
+      <mp-slideview buttons="{{listButtons}}" bindbuttontap="dSlideButtonTap" data-id="{{item._id}}">
+          <view  bindtap='clickDoc' data-fileid='{{item.fileid}}'>
+            <view  class='docItem'>
               <text class='docName'>{{item.fileid}}</text>
               <image src="icon/enter.png" class="enterIcon"></image>
             </view>
           </view>
-        </mp-slideview>
+      </mp-slideview>
       </block>
     </view>
     <!--首页列表-->
-    <!--首页图片列表-->
     <view wx:if="{{currentData == 2}}">
       <block wx:for="{{dataList}}">
-        <mp-slideview buttons="{{listButtons}}" bindbuttontap="pSlideButtonTap" data-id="{{item._id}}">
-          <view class='picItem'>
-            <image src="{{item.Picture}}" mode='aspectFit'></image>
-          </view>
-        </mp-slideview>
+        <image src="{{item.picture}}"></image>
       </block>
     </view>
+  </view>
+  <!-- 按钮 -->
+<view class='Scancode'>
+    <image bindtap='upload' src="icon/add.png" class="icon"></image>
+</view>
+</view>
+<!-- 视频上传弹窗  -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">上传视频</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="vid" maxlength="20" bindinput="inputVid" class="input" placeholder="请输入需上传的腾讯视频的vid"></input>
     </view>
-    <!-- 按钮 -->
-    <view class='Scancode'>
-      <image bindtap='upload' src="icon/add.png" class="icon"></image>
+     <view class="modal-input1">
+    <input placeholder-class1="input-holder" type="name" maxlength="20" bindinput="inputName" class="input1" placeholder="请输入视频名称"></input>
     </view>
   </view>
-  <!-- 视频上传弹窗  -->
-  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-  <view class="modal-dialog" wx:if="{{showModal}}">
-    <view class="modal-title">上传视频</view>
-    <view class="modal-content">
-      <view class="modal-input">
-        <input placeholder-class="input-holder" type="vid" maxlength="20" bindinput="inputVid" class="input" placeholder="请输入需上传的腾讯视频的vid"></input>
-      </view>
-      <view class="modal-input1">
-        <input placeholder-class1="input-holder" type="name" maxlength="20" bindinput="inputName" class="input1" placeholder="请输入视频名称"></input>
-      </view>
-    </view>
-    <view class="modal-footer">
-      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
-    </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
   </view>
+</view>

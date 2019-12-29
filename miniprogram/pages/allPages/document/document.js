@@ -45,6 +45,7 @@ Page({
       }
     })
   },
+  
   searchInput:function(e)
   {
     this.setData({searchWord:e.detail.value})

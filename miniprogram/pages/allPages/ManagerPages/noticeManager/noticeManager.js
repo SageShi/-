@@ -5,19 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    buttons: [
+    noticeList: [],
+    listButtons: [
       {
         type: 'warn',
         text: '删除',
       }
     ],
   },
-
+  getNotice() {
+    let that = this;
+    let imgArr = [];
+    wx.cloud.database().collection("notice").get({
+      success(res) {
+        that.setData({
+          noticeList: res.data
+        })
+      },
+      fail(res) {
+        wx.showModal({
+          title: '警告',
+          content: '获取通知数据失败',
+          showCancel: false
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.getNotice()
   },
 
   /**

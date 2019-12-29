@@ -1,4 +1,3 @@
-
 <!-- 学生端主页 -->
 <view wx:if="{{!isManager}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" vertical="{{isVertical}}" duration="{{duration}}" circular='false'>
@@ -11,7 +10,7 @@
   <view class="connect">
   <text style="margin-left:30rpx;line-height:100rpx;font-size:13px;">有问题欢迎咨询管理员</text>
   <image src="icon/phone.png" class="connecticon" bindtap="callManager"></image>
-  <image src="icon/wechat.png" class="connecticon" bindtap="wechatClick"></image>
+  <image src="icon/wechat.png" class="connecticon"></image>
   </view>
   </view>
       <view class="cCardout">
@@ -35,12 +34,45 @@
           </view>
       </block>
   </view>
-     <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
-    <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
   <!-- 回到顶部浮标 -->
   <image bindtap='onTop' src="icon/top.png" class="icon"></image>
 </view>
 <!-- 教师端主页 -->
 <view wx:if="{{isManager}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" vertical="{{isVertical}}" duration="{{duration}}" circular='false'>
+    <swiper-item wx:for="{{imgList}}">
+      <image bindtap="toDoc" src="{{item.Picture}}" data-fileid='{{item.FileId}}'/>
+    </swiper-item>
+  </swiper>
   <Mnavigation-button bindmyevent="onJumpTap"></Mnavigation-button>
+    <view class="connectCardout">
+  <view class="connect">
+  <text style="margin-left:30rpx;line-height:100rpx;font-size:13px;">有问题请咨询管理员</text>
+  <image src="icon/phone.png" class="connecticon" bindtap="callManager"></image>
+  <image src="icon/wechat.png" class="connecticon"></image>
+  </view>
+  </view>
+        <view class="cCardout">
+      <text class="cCardin">最新通知</text>
+      </view>
+  <view class="notice">
+      <block wx:for="{{noticeList}}">
+          <view class='cardin'>
+            <view class="avatarAndTitle">
+              <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
+              <view class="title">
+                <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
+              </view>
+            </view>
+            <view style="margin-top:10rpx;">
+              <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
+            </view>
+              <view style='text-align:right;margin-top:15rpx;'>
+              <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+              </view>
+          </view>
+      </block>
+  </view>
+  <!-- 回到顶部浮标 -->
+  <image bindtap='onTop' src="icon/top.png" class="icon"></image>
 </view>

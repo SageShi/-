@@ -134,7 +134,6 @@ Page({
   //处理事件“tab”
   radio: function (e) { 
   },
-
   // 选框选择,获取用户选择的单选框的值
   radioChange: function (e) {
     this.setData({
@@ -142,7 +141,6 @@ Page({
     })
     console.log(this.data.choose)
   },
-
   //按钮点击事件，查表
   checkInStudent: function (e) {
         app.globalData.isManager = false;//将是否为管理员的全局变量设为假

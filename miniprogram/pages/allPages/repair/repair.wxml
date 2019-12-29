@@ -1,4 +1,3 @@
-
 <!-- 学生端页面 -->
 <view wx:if="{{!isManager}}">
  <!--Tab布局-->
@@ -6,7 +5,6 @@
     <view class='tab  {{currentData == 0 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "0" bindtap='checkCurrent'>报修</view>
     <view class='tab  {{currentData == 1 ? "tabBorer-A" : "tabBorer-B"}}'  data-current = "1" bindtap='checkCurrent'>建议</view>
   </view>
-
   <!--内容布局-->
   <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
     <swiper-item class='swiper'>
@@ -73,27 +71,27 @@
 <!-- 教师端页面 -->
 <view  wx:if="{{isManager}}">
       <view style='height=100%'>
-      <form style='height=100%' bindsubmit="noticeClick">
+      <form style='height=100%' bindsubmit="repairClick">
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
-            <input class='in' value="{{noticeForm.archNum}}" name="narchNum">
+            <input class='in' value="{{repairForm.archNum}}" name="rarchNum">
             </input>
         </view>
         <view class='out'>
             <image src='icon/room.png'/>
-            <input class='in' value="{{noticeForm.roomNum}}" name="nroomNum">
+            <input class='in' value="{{repairForm.roomNum}}" name="rroomNum">
             </input>
         </view>
       </picker>
       <view class='out'>
           <view class='in'>
               <image src='icon/cpt-g.png'/>
-              <input placeholder='通知类型' value="{{noticeForm.type}}" name="type"></input>
+              <input placeholder='机器号' value="{{repairForm.mechaNum}}" name="mechaNum" type="number"></input>
           </view>
       </view>
-      <textarea placeholder='请输入具体描述内容（五百字以内）' maxlength='500' class='inputtext' value="{{noticeForm.notice}}" name="notice"></textarea>
-      <button class='submitbutton' form-type="submit">提交</button>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' value="{{repairForm.description}}" name="description"></textarea>
+      <button class='msubmitbutton' form-type="submit">提交</button>
       </form>
       </view>
 </view>

@@ -1,12 +1,13 @@
 <!--index.wxml-->
 <view>
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <image src="{{avatarUrl}}" class="userinfo-avatar"></image>
-    <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
-  </view>
   <!-- 学生信息设置页面 -->
   <view wx:if="{{!isManager}}">
+    <!-- 用户 openid -->
+    <view class="userinfo">
+    <image src="{{avatarUrl}}" class="userinfo-avatar"></image>
+    <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
+      </view>
+      <!-- 信息栏 -->
       <view class="setting">
       <view bindtap="toName" class="setting-container">
         <image src="icon/name.png" class="setting-icon"></image>
@@ -46,5 +47,10 @@
   </view>
   <!-- 教师信息页面 -->
   <view wx:if="{{isManager}}">
+      <!-- 用户 openid -->
+    <view class="Muserinfo">
+    <image src="{{avatarUrl}}" class="userinfo-avatar"></image>
+    <text style="margin-top:15rpx;margin-bottom:80rpx;text-color:white;">{{userInfo.nickName}}</text>
+      </view>
   </view>
 </view>

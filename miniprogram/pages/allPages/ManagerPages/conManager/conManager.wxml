@@ -1,2 +1,8 @@
-<!--miniprogram/pages/allPages/ManagerPages/conManager/conManager.wxml-->
-<text>miniprogram/pages/allPages/ManagerPages/conManager/conManager.wxml</text>
+<form bindsubmit="finish">
+<button size="mini"style="margin:10rpx" bindtap="cancel">取消</button>
+<button size="mini" style="background-color:#efb336;color:white;float:right;margin:10rpx;"form-type="submit">完成</button>
+<view class="setting">
+<input class="content" value='{{original}}' type="{{inputType}}" name="inputContent"></input>
+</view>
+</form>
+ 

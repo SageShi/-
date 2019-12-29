@@ -52,7 +52,7 @@ textarea{
 
 .submitbutton{
   width: 80%;
-  background-color: #efb336;
+  background-color: #d81e06;
   color: white;
   border-radius: 98rpx;
   margin-bottom: 10rpx;
@@ -100,4 +100,11 @@ input{
 }
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color: #efb336;
+}
+.msubmitbutton{
+  width: 80%;
+  background-color: #1296db;
+  color: white;
+  border-radius: 98rpx;
+  margin-bottom: 10rpx;
 }

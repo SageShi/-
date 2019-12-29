@@ -1,4 +1,3 @@
-
 <txv-video class='myvedio'vid="{{vid}}" playerid="txv{{id}}"  autoplay="{{false}}"></txv-video>
     <!----评论列表---->
     <view class="cCardout">

@@ -1,6 +1,6 @@
 // pages/home1/notice/notice.js
 const app = getApp()
-import WxValidate from '../../utils/WxValidate.js'
+import WxValidate from '../../allPages/utils/WxValidate.js'
 Page({
   /**
    * 页面的初始数据

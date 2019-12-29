@@ -1,5 +1,4 @@
 <!--miniprogram/pages/welcome.wxml-->
-
 <view class="main">
   <image src="scut.jpg" style="height:200px;width:200px;"></image>
 </view>

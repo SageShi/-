@@ -26,7 +26,7 @@ Component({
                 {
                     "img": "icon/connect.png",
                     "name": "联系管理",
-                  "path": "/pages/allPages/ManagerPages/conManager/conManager"
+                    "path": "/pages/allPages/ManagerPages/conManager/conManager"
                 }
             ],
             [

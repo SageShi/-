@@ -108,7 +108,38 @@ Page({
   //未通过页面
   aSlideButtonTap(e) {
     if (e.detail.index == 0) {
-      console.log('tongguo')
+      var id = e.currentTarget.dataset.id
+      var name = e.currentTarget.dataset.name
+      var school = e.currentTarget.dataset.school
+      var wxid = e.currentTarget.dataset.wxid
+      var avatarurl = e.currentTarget.dataset.avatarurl
+      const db = wx.cloud.database()
+      db.collection('manager').add({
+        data: {
+          AvatarUrl: avatarurl ,
+          Name: name,
+          School:school,
+          Wxid: wxid,
+        },
+        success: res => {
+          wx.showToast({
+            title: '通过成功',
+          })
+          wx.cloud.callFunction({
+            name: 'remove',
+            data: {
+              id: id,
+              collection: 'apply'
+            }
+          })
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '通过失败'
+          })
+        }
+      })
     } else {
       var id = e.currentTarget.dataset.id
       var that = this

@@ -1,10 +1,10 @@
 /**index.wxss**/
-/** 头像部分**/
+/** 学生头像部分**/
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background:linear-gradient(#efb336,#FFF);
+  background:linear-gradient(#d81e06,#FFF);
   width: 100%;
   height:600rpx；
 }
@@ -48,4 +48,13 @@
   height: 40rpx;
   margin-top: 40rpx;
   margin-bottom: 40rpx;
+}
+/* 教师头像 */
+.Muserinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:linear-gradient(#1296db,#FFF);
+  width: 100%;
+  height:600rpx；
 }
