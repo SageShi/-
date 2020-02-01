@@ -1,4 +1,4 @@
-<!-- 学生端主页 -->
+<!-- 用户端主页 -->
 <view wx:if="{{!isManager}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" vertical="{{isVertical}}" duration="{{duration}}" circular='false'>
     <swiper-item wx:for="{{imgList}}">
@@ -26,7 +26,7 @@
               </view>
             </view>
             <view style="margin-top:10rpx;">
-              <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
+              <text style="font-size:14px;word-break:break-all;">{{item.Notice}}</text>
             </view>
               <view style='text-align:right;margin-top:15rpx;'>
               <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
@@ -39,7 +39,7 @@
   <!-- 回到顶部浮标 -->
   <image bindtap='onTop' src="icon/top.png" class="icon"></image>
 </view>
-<!-- 教师端主页 -->
+<!-- 管理员端主页 -->
 <view wx:if="{{isManager}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" vertical="{{isVertical}}" duration="{{duration}}" circular='false'>
     <swiper-item wx:for="{{imgList}}">
@@ -47,13 +47,6 @@
     </swiper-item>
   </swiper>
   <Mnavigation-button bindmyevent="onJumpTap"></Mnavigation-button>
-    <view class="connectCardout">
-  <view class="connect">
-  <text style="margin-left:30rpx;line-height:100rpx;font-size:13px;">有问题请咨询管理员</text>
-  <image src="icon/phone.png" class="connecticon" bindtap="callManager"></image>
-  <image src="icon/wechat.png" class="connecticon"></image>
-  </view>
-  </view>
         <view class="cCardout">
       <text class="cCardin">最新通知</text>
       </view>
@@ -67,7 +60,7 @@
               </view>
             </view>
             <view style="margin-top:10rpx;">
-              <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
+              <text style="font-size:14px;word-break:break-all;">{{item.Notice}}</text>
             </view>
               <view style='text-align:right;margin-top:15rpx;'>
               <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>

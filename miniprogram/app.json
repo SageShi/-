@@ -31,7 +31,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "机房智多星",
+    "navigationBarTitleText": "机房小助手",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

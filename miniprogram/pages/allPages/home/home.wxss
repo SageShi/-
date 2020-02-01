@@ -35,6 +35,8 @@ border-bottom: 1px solid #ccc;
   background: rgba(204, 204, 204, 0.295);
   display: flex;
   border-bottom: 1px solid #ccc ;
+  border-top:1px solid #ccc ;
+  padding-top: 10px;
 }
 
 .cCardin {

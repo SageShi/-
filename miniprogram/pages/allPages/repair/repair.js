@@ -17,7 +17,6 @@ Page({
     adviceForm: {
       archNum: 'B7',
       roomNum: '133',
-      subject: '',
       content: '',
     },
     noticeForm: {
@@ -61,13 +60,11 @@ Page({
         archNum: 'B7',
         roomNum: '133',
         notice: '',
-        type: '',
       },
     })
   },
   // 提交表单
   noticeClick: function (e) {
-
   },
   //数据库
   /**
@@ -173,21 +170,15 @@ Page({
       this.WxValidate = new WxValidate(rules, messages)
     } else {
       const rules = {
-        subject: {
-          required: true,
-        },
         content: {
           required: true,
-          minlength: 30
+          minlength: 10
         }
       }
       const messages = {
-        subject: {
-          required: '请输入学科',
-        },
         content: {
           required: '请输入建议内容',
-          minlength: '建议内容不少于30字'
+          minlength: '建议内容不少于10字'
         }
       }
       this.WxValidate = new WxValidate(rules, messages)
@@ -216,7 +207,6 @@ Page({
       adviceForm: {
         archNum: 'B7',
         roomNum: '133',
-        subject: '',
         content: '',
       }
     })

@@ -49,13 +49,7 @@
             </view>
         </view>
       </picker>
-      <view class='out'>
-          <view class='in'>
-              <image src='icon/dsp.png'/>
-              <input placeholder='学科' value="{{adviceForm.subject}}" name="subject"></input>
-          </view>
-      </view>
-      <textarea placeholder='请输入具体建议内容（大于三十字）' class='inputtext' value="{{adviceForm.content}}" name="content"></textarea>
+      <textarea placeholder='请输入具体建议内容（大于十字）' class='inputtext' value="{{adviceForm.content}}" name="content"></textarea>
       <checkbox-group bindchange="nonName">
             <view class="checkboxWrap">
             <checkbox value="匿名提交"/>
@@ -71,7 +65,7 @@
 <!-- 教师端页面 -->
 <view  wx:if="{{isManager}}">
       <view style='height=100%'>
-      <form style='height=100%' bindsubmit="repairClick">
+      <form style='height=100%' bindsubmit="noticeClick">
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
@@ -84,13 +78,7 @@
             </view>
         </view>
       </picker>
-      <view class='out'>
-          <view class='in'>
-              <image src='icon/cpt-g.png'/>
-              <input placeholder='机器号' value="{{repairForm.mechaNum}}" name="mechaNum" type="number"></input>
-          </view>
-      </view>
-      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' value="{{repairForm.description}}" name="description"></textarea>
+      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' value="{{adviceForm.notice}}" name="notice"></textarea>
       <button class='msubmitbutton' form-type="submit">提交</button>
       </form>
       </view>

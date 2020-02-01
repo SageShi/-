@@ -13,7 +13,7 @@
           <text class='intro_info'>{{item.Content}}</text>
         </view>
         <view style='text-align:right;margin-top:10rpx;'>
-          <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum+'-'+item.Subject}}</label>
+          <label style='text-align:right;'>{{item.ArchNum+'-'+item.RoomNum}}</label>
         </view>
         <view class="supportBox">
         <image src="icon/view.png" class="support" data-id="{{item._id}}"></image>

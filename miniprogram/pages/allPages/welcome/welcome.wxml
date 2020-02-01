@@ -4,7 +4,7 @@
 </view>
 <!-- 选学生还是教师 -->
 <view>
-  <button bindtap="checkInStudent">学生入口</button>
-  <button bindtap="checkInManager">教师入口</button>
+  <button bindtap="checkInStudent">用户入口</button>
+  <button bindtap="checkInManager">管理员入口</button>
 </view>
 
