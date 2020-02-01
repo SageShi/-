@@ -13,13 +13,13 @@
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
-            <input class='in' value="{{repairForm.archNum}}" name="rarchNum">
-            </input>
+            <view class='in' name="rarchNum">{{repairForm.archNum}}
+            </view>
         </view>
         <view class='out'>
             <image src='icon/room.png'/>
-            <input class='in' value="{{repairForm.roomNum}}" name="rroomNum">
-            </input>
+            <view class='in' name="rroomNum">{{repairForm.roomNum}}
+            </view>
         </view>
       </picker>
       <view class='out'>
@@ -37,16 +37,16 @@
     <swiper-item class='swiper'>
       <view style='height=100%'>
       <form style='height=100%' bindsubmit="adviceClick">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange1" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
-            <input class='in' value="{{adviceForm.archNum}}" name="aarchNum">
-            </input>
+            <view class='in'name="aarchNum"> {{adviceForm.archNum}}
+            </view>
         </view>
         <view class='out'>
             <image src='icon/room.png'/>
-            <input class='in' value="{{adviceForm.roomNum}}" name="aroomNum">
-            </input>
+            <view class='in' name="aroomNum">{{adviceForm.roomNum}}
+            </view>
         </view>
       </picker>
       <view class='out'>
@@ -75,13 +75,13 @@
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
-            <input class='in' value="{{repairForm.archNum}}" name="rarchNum">
-            </input>
+            <view class='in' name="rarchNum">{{repairForm.archNum}}
+            </view>
         </view>
         <view class='out'>
             <image src='icon/room.png'/>
-            <input class='in' value="{{repairForm.roomNum}}" name="rroomNum">
-            </input>
+            <view class='in' name="rroomNum">{{repairForm.roomNum}}
+            </view>
         </view>
       </picker>
       <view class='out'>

@@ -82,7 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.getVedio()
+    this.getData(this.data.currentData)
   },
     //滑动删除视频
   vSlideButtonTap(e) {
@@ -109,6 +109,7 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
@@ -137,6 +138,7 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
@@ -175,6 +177,7 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
@@ -241,7 +244,7 @@ Page({
         wx.showToast({
           title: '上传成功',
         })
-        this.resetData()
+        this.onLoad()
       },
       fail: err => {
         wx.showToast({
@@ -252,8 +255,6 @@ Page({
     })
 
     this.hideModal();
-
-    this.refresh()
   },
   inputVid: function (e) {
     this.data.videoVid = e.detail.value
@@ -288,7 +289,7 @@ Page({
             wx.showToast({
               title: '上传成功',
             })
-
+            this.onLoad()
           },
           fail: err => {
             wx.showToast({
@@ -351,7 +352,7 @@ Page({
             wx.showToast({
               title: '上传成功',
             })
-
+           this.onLoad()
           },
           fail: err => {
             wx.showToast({
