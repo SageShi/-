@@ -1,8 +1,9 @@
 /* pages/home1/video/video.wxss */
-.myvedio{
+.myVideo{
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 /* miniprogram/pages/allPages/detail/detail.wxss */
 /* 建议 */

@@ -7,7 +7,7 @@ Page({
    */
   data: {
     commentList:[],
-    vid:'',
+    url:'',
     id:'',
     newComment:'',
   },
@@ -22,14 +22,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      vid: options.vid || '',
+      url: options.url || '',
       id: options.id || ''
     });
     const db = wx.cloud.database({})
     const comment = db.collection('vComment')
     // 加载评论表
     comment.where(
-      { videoId: options.vid }
+      { videoId: options.url }
     ).get({
       success: res => {
         this.setData({
@@ -56,7 +56,7 @@ Page({
           Holderid: app.globalData.studentdocid,
           HolderAvatarUrl: app.globalData.avatarUrl,
           Content: this.data.newComment,
-          videoId: this.data.vid,
+          videoId: this.data.url,
           Year: myDate.getFullYear(),
           Month: myDate.getMonth() + 1,
           Date: myDate.getDate(),
@@ -68,6 +68,7 @@ Page({
             title: '评论成功',
             duration: 2000
           })
+          this.onLoad()
         }
       })
     } else {

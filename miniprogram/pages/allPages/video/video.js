@@ -13,10 +13,10 @@ Page({
   
   clickVideo:function(e){
     console.log(this.data.isManager)
-    var vid=e.currentTarget.dataset.vid;
+    var url=e.currentTarget.dataset.url;
     var id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../videoPlay/videoPlay?vid='+vid+'&id'+id
+      url: '../videoPlay/videoPlay?url='+url+'&id'+id
     })
   },
   /**

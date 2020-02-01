@@ -18,7 +18,7 @@
 
 <!-- 视频列表   -->
   <view wx:for="{{videoList}}" wx:key="*this">
-    <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'  class='vedioItemOutter'>
+    <view  bindtap='clickVideo' data-url='{{item.url}}' data-id='{{item.id}}'  class='vedioItemOutter'>
       <image src="icon/vedio.png" class="vedioIcon"></image>
       <view class='vedioItemInner'>
         <text class='vedioName'>{{item.name}}</text>

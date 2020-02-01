@@ -1,4 +1,4 @@
-<txv-video class='myvedio'vid="{{vid}}" playerid="txv{{id}}"  autoplay="{{false}}"></txv-video>
+  <video class="myVideo" src="{{url}}" ></video>
     <!----评论列表---->
     <view class="cCardout">
     <text class="cCardin">{{'评论（' + commentList.length + '）'}}</text>

@@ -15,7 +15,7 @@ Page({
     searchWord: "",
     //是否弹出弹窗
     showModal: false,
-    videoVid: '',
+    videoUrl: '',
     videoName: '',
     uploadFileName: '',
   },
@@ -24,7 +24,7 @@ Page({
    */
   checkCurrent: function (e) {
     const that = this;
-    if (that.data.currentData === e.target.dataset.current) {
+    if (that.data.currentData == e.target.dataset.current) {
       return false;
     } else {
       that.setData({
@@ -82,7 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.getVedio()
+   this.getData(this.data.currentData)
   },
     //滑动删除视频
   vSlideButtonTap(e) {
@@ -109,6 +109,7 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
@@ -137,6 +138,7 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
@@ -175,15 +177,16 @@ Page({
         wx.showToast({
           title: '删除成功',
         })
+        this.onLoad()
       },
     })
   },
   //点击进入视频或文档页面
   clickVideo: function (e) {
-    var vid = e.currentTarget.dataset.vid;
+    var url = e.currentTarget.dataset.url;
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/allPages/videoPlay/videoPlay?vid=' + vid + '&id' + id
+      url: '/pages/allPages/videoPlay/videoPlay?url=' + url + '&id' + id
     })
   },
   clickDoc: function (e) {
@@ -234,14 +237,14 @@ Page({
     const db = wx.cloud.database()
     db.collection('videos').add({
       data: {
-        vid: this.data.videoVid,
+        url: this.data.videoUrl,
         name: this.data.videoName
       },
       success: res => {
         wx.showToast({
           title: '上传成功',
         })
-        this.resetData()
+        this.onLoad()
       },
       fail: err => {
         wx.showToast({
@@ -252,11 +255,9 @@ Page({
     })
 
     this.hideModal();
-
-    this.refresh()
   },
-  inputVid: function (e) {
-    this.data.videoVid = e.detail.value
+  inputUrl: function (e) {
+    this.data.videoUrl = e.detail.value
   },
   inputName: function (e) {
     this.data.videoName = e.detail.value
@@ -282,13 +283,13 @@ Page({
                 fileid: that.data.uploadFileName
               },
               success: res => {
-                that.refresh()
+             this.onLoad()
               }
             })
             wx.showToast({
               title: '上传成功',
             })
-
+            this.onLoad()
           },
           fail: err => {
             wx.showToast({
@@ -345,13 +346,13 @@ Page({
                 Picture: res.fileID
               },
               success: res => {
-                //that.refresh()
+               this.onLoad()
               }
             })
             wx.showToast({
               title: '上传成功',
             })
-
+            this.onLoad()
           },
           fail: err => {
             wx.showToast({

@@ -30,7 +30,7 @@
     <view wx:if="{{currentData == 0}}">
       <block wx:for="{{dataList}}">
         <mp-slideview buttons="{{listButtons}}" bindbuttontap="vSlideButtonTap" data-id="{{item._id}}">
-      <view  bindtap='clickVideo' data-vid='{{item.vid}}' data-id='{{item.id}}'  class='vedioItemOutter'>
+      <view  bindtap='clickVideo' data-url='{{item.url}}' data-id='{{item.id}}'  class='vedioItemOutter'>
         <image src="icon/vedio.png" class="vedioIcon"></image>
         <view class='vedioItemInner'>
           <text class='vedioName'>{{item.name}}</text>
@@ -76,7 +76,7 @@
   <view class="modal-title">上传视频</view>
   <view class="modal-content">
     <view class="modal-input">
-      <input placeholder-class="input-holder" type="vid" maxlength="20" bindinput="inputVid" class="input" placeholder="请输入需上传的腾讯视频的vid"></input>
+      <input placeholder-class="input-holder" type="url" maxlength="1000" bindinput="inputUrl" class="input" placeholder="请输入需上传的视频的url"></input>
     </view>
      <view class="modal-input1">
     <input placeholder-class1="input-holder" type="name" maxlength="20" bindinput="inputName" class="input1" placeholder="请输入视频名称"></input>

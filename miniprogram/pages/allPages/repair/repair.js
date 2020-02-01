@@ -111,10 +111,18 @@ Page({
    * 选择器
    */
   bindMultiPickerChange: function (e) {
+    this.data.repairForm.archNum = this.data.multiArray[0][e.detail.value[0]],
+    this.data.repairForm.roomNum = this.data.multiArray[1][e.detail.value[1]],
     this.setData({
-      archNum: this.data.multiArray[0][e.detail.value[0]],
-      roomNum: this.data.multiArray[1][e.detail.value[1]]
+      repairForm:this.data.repairForm
     })
+  },
+  bindMultiPickerChange1: function (e) {
+    this.data.adviceForm.archNum = this.data.multiArray[0][e.detail.value[0]],
+      this.data.adviceForm.roomNum = this.data.multiArray[1][e.detail.value[1]],
+      this.setData({
+      adviceForm: this.data.adviceForm
+      })
   },
   /**
    * 生命周期函数--监听页面加载
