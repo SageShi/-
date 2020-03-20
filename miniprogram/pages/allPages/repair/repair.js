@@ -320,9 +320,9 @@ Page({
       const db = wx.cloud.database()
       db.collection('repair').add({
         data: {
-          ArchNum: params.rarchNum,
-          RoomNum: params.rroomNum,
-          MechaNum: params.mechaNum,
+          ArchNum: this.data.repairForm.archNum,
+          RoomNum: this.data.repairForm.roomNum,
+          MechaNum:params.mechaNum,
           Description: params.description,
 
           Year: myDate.getFullYear(),
@@ -381,8 +381,8 @@ Page({
       const db = wx.cloud.database()
       db.collection('advice').add({
         data: {
-          ArchNum: params.aarchNum,
-          RoomNum: params.aroomNum,
+          ArchNum: this.data.adviceForm.archNum,
+          RoomNum: this.data.adviceForm.roomNum,
           Subject: params.subject,
           Content: params.content,
           Support: 0,
