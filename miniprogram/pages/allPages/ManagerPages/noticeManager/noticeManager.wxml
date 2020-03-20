@@ -1,25 +1,25 @@
 <!--miniprogram/pages/allPages/ManagerPages/noticeManager/noticeManager.wxml-->
-  <view class="notice">
-      <block wx:for="{{noticeList}}">
-        <mp-slideview buttons="{{listButtons}}" bindbuttontap="slideButtonTap" data-id="{{item._id}}">
-          <view class='cardin'>
-            <view class="avatarAndTitle">
-              <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
-              <view class="title">
-                <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
-              </view>
-            </view>
-            <view style="margin-top:10rpx;">
-              <text style="font-size:14px;word-break:break-all;">{{item.Content}}</text>
-            </view>
-              <view style='text-align:right;margin-top:15rpx;'>
-              <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
-              </view>
+<view class="notice">
+  <block wx:for="{{noticeList}}">
+    <mp-slideview buttons="{{listButtons}}" bindbuttontap="slideButtonTap" data-id="{{item._id}}">
+      <view class='cardin'>
+        <view class="avatarAndTitle">
+          <image src="{{item.HolderAvatarUrl}}" class='Cavatar'></image>
+          <view class="title">
+            <label style="font-size:13px ;margin-bottom:3px">{{item.Holder}}</label>
           </view>
-        </mp-slideview>
-      </block>
-  </view>
-  <!-- 回到顶部浮标 -->
-  <image bindtap='onTop' src="icon/top.png" class="icon"></image>
+        </view>
+        <view style="margin-top:10rpx;">
+          <text style="font-size:14px;word-break:break-all;">{{item.Notice}}</text>
+        </view>
+        <view style='text-align:right;margin-top:15rpx;'>
+          <label style="font-size:10px;text-align:right;">{{item.Year+'-'+item.Month+'-'+item.Date+' '+item.Hours+':'+item.Minutes}}</label>
+        </view>
+      </view>
+    </mp-slideview>
+  </block>
+</view>
+<!-- 回到顶部浮标 -->
+<image bindtap='onTop' src="icon/top.png" class="icon"></image>
 <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
 <view class="loading" hidden="{{!loadAll}}">已加载全部</view>

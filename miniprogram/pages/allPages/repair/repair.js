@@ -65,18 +65,20 @@ Page({
   },
   // 提交表单
   noticeClick: function (e) {
+    const params = e.detail.value
+    this.onAddNotice(params)
   },
   //数据库
   /**
-* 数据库函数-报修
+* 数据库函数-通知
 */
   onAddNotice: function (params) {
     var myDate = new Date();//获取系统当前时间
     const db = wx.cloud.database()
     db.collection('notice').add({
       data: {
-        ArchNum: params.narchNum,
-        RoomNum: params.nroomNum,
+        ArchNum: this.data.noticeForm.archNum,
+        RoomNum: this.data.noticeForm.roomNum,
         Type: params.type,
         Notice: params.notice,
 
@@ -119,6 +121,13 @@ Page({
       this.data.adviceForm.roomNum = this.data.multiArray[1][e.detail.value[1]],
       this.setData({
         adviceForm: this.data.adviceForm
+      })
+  },
+  bindMultiPickerChange2: function (e) {
+    this.data.noticeForm.archNum = this.data.multiArray[0][e.detail.value[0]],
+      this.data.noticeForm.roomNum = this.data.multiArray[1][e.detail.value[1]],
+      this.setData({
+      noticeForm: this.data.noticeForm
       })
   },
   /**

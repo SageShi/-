@@ -34,6 +34,7 @@
     "navigationBarTitleText": "机房小助手",
     "navigationBarTextStyle": "black"
   },
+  
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "selectedColor": "#efb336",

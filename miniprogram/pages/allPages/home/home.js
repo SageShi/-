@@ -162,7 +162,11 @@ Page({
     }
     console.log(currentPage)
     //云数据的请求
-    wx.cloud.database().collection("notice").orderBy('createTime', 'desc')              //时间逆序
+    wx.cloud.database().collection("notice").orderBy('Year', 'desc')              //时间逆序
+      .orderBy('Month', 'desc')
+      .orderBy('Date', 'desc')
+      .orderBy('Hour', 'desc')
+      .orderBy('Minutes', 'desc')
       .skip(currentPage * pageSize) //从第几个数据开始
       .limit(pageSize)
       .get({
@@ -233,14 +237,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    
   },
 
   /**

@@ -110,7 +110,11 @@ Page({
     }
     console.log(currentPage)
     //云数据的请求
-    wx.cloud.database().collection("notice").orderBy('createTime', 'desc')              //时间逆序
+    wx.cloud.database().collection("notice").orderBy('Year', 'desc')              //时间逆序
+      .orderBy('Month', 'desc')
+      .orderBy('Date', 'desc')
+      .orderBy('Hour', 'desc')
+      .orderBy('Minutes', 'desc')
       .skip(currentPage * pageSize) //从第几个数据开始
       .limit(pageSize)
       .get({
@@ -146,6 +150,35 @@ Page({
           });
         }
       })
+  },
+
+//滑动删除
+  slideButtonTap:function(e){
+    var id = e.currentTarget.dataset.id
+    var that = this
+    wx.showModal({
+      title: '注意',
+      content: '你确定要删除该通知？',
+      success: function (res) {
+        if (res.confirm) {
+          that.deleteNotice(id)
+        }
+      }
+    })
+  },
+  deleteNotice: function (ID) {
+    wx.cloud.callFunction({
+      name: 'remove',
+      data: {
+        id: ID,
+        collection: 'notice'
+      },
+      complete: res => {
+        wx.showToast({
+          title: '删除成功',
+        })
+      },
+    })
   },
 
   /**

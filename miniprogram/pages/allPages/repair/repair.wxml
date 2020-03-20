@@ -66,7 +66,7 @@
 <view  wx:if="{{isManager}}">
       <view style='height=100%'>
       <form style='height=100%' bindsubmit="noticeClick">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{multiArray}}">
+      <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange2" range="{{multiArray}}">
         <view class='out'>
             <image src='icon/building.png'/>
             <view class='in' name="rarchNum">{{repairForm.archNum}}
@@ -77,8 +77,8 @@
             <view class='in' name="rroomNum">{{repairForm.roomNum}}
             </view>
         </view>
-      </picker>
-      <textarea placeholder='请输入具体描述内容（一百字以内）' maxlength='100' class='inputtext' value="{{adviceForm.notice}}" name="notice"></textarea>
+      </picker> -->
+      <textarea placeholder='请输入具体通知内容（一百字以内）' maxlength='100' class='inputtext' value="{{adviceForm.notice}}" name="notice"></textarea>
       <button class='msubmitbutton' form-type="submit">提交</button>
       </form>
       </view>
