@@ -6,21 +6,26 @@ Page({
   /**
    * 页面的初始数据
    */
-    data: {
-      avatarUrl: './user-unlogin.png',
-      userInfo: { },
-      logged: false,
-      takeSession: false,
-      requestResult: '',
+  data: {
+    avatarUrl: './user-unlogin.png',
+    userInfo: {},
+    logged: false,
+    takeSession: false,
+    requestResult: '',
 
-      Identity:[{name:'学生端'},
-      {name:'教师端'}],
+    Identity: [{
+        name: '学生端'
+      },
+      {
+        name: '教师端'
+      }
+    ],
 
-      choose:'',
-      managerList: []
-    },
+    choose: '',
+    managerList: []
+  },
 
-  onLoad: function () {
+  onLoad: function() {
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
@@ -60,7 +65,7 @@ Page({
       }
     })
   },
-  onGetOpenid: function () {
+  onGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
@@ -82,13 +87,13 @@ Page({
   },
 
   // 上传图片
-  doUpload: function () {
+  doUpload: function() {
     // 选择图片
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
 
         wx.showLoading({
           title: '上传中',
@@ -132,128 +137,131 @@ Page({
   },
 
   //处理事件“tab”
-  radio: function (e) { 
-  },
+  radio: function(e) {},
   // 选框选择,获取用户选择的单选框的值
-  radioChange: function (e) {
+  radioChange: function(e) {
     this.setData({
       choose: e.detail.value
     })
     console.log(this.data.choose)
   },
   //按钮点击事件，查表
-  checkInStudent: function (e) {
-        app.globalData.isManager = false;//将是否为管理员的全局变量设为假
-        wx.switchTab({
-          url: '/pages/index/index'
-        })
+  checkInStudent: function(e) {
+    app.globalData.isManager = false; //将是否为管理员的全局变量设为假
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
   },
-  checkInManager:function (e) {
+  checkInManager: function(e) {
     const db = wx.cloud.database({});
     const table = db.collection('manager');
+    if (!app.globalData.openid)
+    {
+      wx.showModal({
+        title: '警告',
+        content: '获取用户微信数据失败',
+      })
+      return
+    }
     //点击教师端，缓存管理员列表
-      table.where({
-        Wxid: app.globalData.openid
-      }).get(
-        {
-          success: function (res) {
-            if (res.data.length > 0) {
-              app.globalData.isManager = true;  //将是否为管理员的全局变量设为真
-              wx.switchTab({
-                url: '/pages/index/index'
-              });
-            } else {
-              const cdb = wx.cloud.database({});
-              const apply = cdb.collection('apply');
-              apply.where({
-                Wxid: app.globalData.openid
-              }).get(
-                {
-                  success: function (res) {
-                    if (res.data.length > 0) {
-                      wx.showToast({
-                        icon: 'none',
-                        title: '等待审核'
-                      })
-                    } else {
-                      wx.showModal({
-                        content: '是否申请成为管理员？',
-                        success: function (res) {
-                          if (res.cancel) {
-                          } else {
-                            wx.navigateTo({
-                              url: '../managerSetting/managerSetting',
-                            })
-                          }
-                        }
+    table.where({
+      Wxid: app.globalData.openid
+    }).get({
+      success: function(res) 
+      {
+        if (res.data.length > 0) {
+          app.globalData.isManager = true; //将是否为管理员的全局变量设为真
+          wx.switchTab({
+            url: '/pages/index/index'
+          });
+        } else {
+          const cdb = wx.cloud.database({});
+          const apply = cdb.collection('apply');
+          apply.where({
+            Wxid: app.globalData.openid
+          }).get({
+            success: function(res) {
+              if (res.data.length > 0) {
+                wx.showToast({
+                  icon: 'none',
+                  title: '等待审核'
+                })
+              } else {
+                wx.showModal({
+                  content: '是否申请成为管理员？',
+                  success: function(res) {
+                    if (res.cancel) {} else {
+                      wx.navigateTo({
+                        url: '../managerSetting/managerSetting',
                       })
                     }
-                  },
-                  fail: function () {
-                    wx.showToast({
-                      icon: 'none',
-                      title: '网络不佳'
-                    })
                   }
-                }
-              )
+                })
+              }
+            },
+            fail: function() {
+              wx.showToast({
+                icon: 'none',
+                title: '网络不佳'
+              })
             }
-          },
-          fail: function () {
-            wx.showToast({
-              icon: 'none',
-              title: '网络不佳'
-            })
-          }
+          })
         }
-      )
+      },
+      fail: function() {
+        wx.showToast({
+          icon: 'none',
+          title: '网络不佳'
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
