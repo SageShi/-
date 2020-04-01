@@ -123,7 +123,11 @@ Page({
     }
     console.log(currentPage)
     //云数据的请求
-    wx.cloud.database().collection("advice").orderBy('createTime', 'desc')              //时间逆序
+    wx.cloud.database().collection("advice").orderBy('Year', 'desc')              //时间逆序
+      .orderBy('Month', 'desc')
+      .orderBy('Date', 'desc')
+      .orderBy('Hour', 'desc')
+      .orderBy('Minutes', 'desc')
       .skip(currentPage * pageSize) //从第几个数据开始
       .limit(pageSize)
       .get({

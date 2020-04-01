@@ -11,36 +11,42 @@
       <view class="setting">
       <view bindtap="toName" class="setting-container">
         <image src="icon/name.png" class="setting-icon"></image>
+        <text>姓名</text>
         <text style="margin-left:30rpx;">{{name}}</text>
       </view>
     </view>
     <view class="setting">
       <view bindtap="toStudentId" class="setting-container">
       <image src="icon/studentId.png" class="setting-icon"></image>
+      <text>学号</text>
       <text style="margin-left:30rpx;">{{studentId}}</text>
       </view>
     </view>
     <view class="setting">
       <view bindtap="toSchool" class="setting-container">
       <image src="icon/school.png" class="setting-icon"></image>
+      <text>学院</text>
       <text style="margin-left:30rpx;">{{school}}</text>
       </view>
     </view>
     <view class="setting">
       <view bindtap="toMajor" class="setting-container">
         <image src="icon/major.png" class="setting-icon"></image>
+        <text>专业</text>
         <text style="margin-left:30rpx;">{{major}}</text>
       </view>
     </view>
     <view class="setting">
       <view bindtap="toGrade" class="setting-container">
         <image src="icon/grade.png" class="setting-icon"></image>
+        <text>年级</text>
         <text style="margin-left:30rpx;">{{grade}}</text>
       </view>
     </view>
     <view class="setting">
       <view bindtap="toClass" class="setting-container">
         <image src="icon/class.png" class="setting-icon"></image>
+        <text>班级</text>
         <text style="margin-left:30rpx;">{{uclass}}</text>
       </view>
     </view>
